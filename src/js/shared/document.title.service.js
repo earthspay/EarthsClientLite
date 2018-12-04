@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var prefix = 'Waves Lite Client';
+    var prefix = 'Earths Lite Client';
 
     angular
         .module('app.shared')

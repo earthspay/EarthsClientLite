@@ -15,7 +15,7 @@ if (angular.$$lowercase) {
 
 var app = angular.module('app', [
     'restangular',
-    'waves.core',
+    'earths.core',
 
     'ngclipboard',
     'ngAnimate',
@@ -46,19 +46,19 @@ function AngularApplicationConfig($provide, $compileProvider, $validatorProvider
     $provide.constant(applicationSettings,
         angular.extend(applicationSettings, {
             CLIENT_VERSION: '0.4.1a',
-            NODE_ADDRESS: 'https://testnet1.wavesnodes.com',
-            COINOMAT_ADDRESS: 'https://coinomat.com',
-            MATCHER_ADDRESS: 'https://testnet1.wavesnodes.com',
-            DATAFEED_ADDRESS: 'https://marketdata.wavesplatform.com'
+            NODE_ADDRESS: 'https://testnet1.earthsnodes.com',
+            COINOMAT_ADDRESS: 'https://coinomat.earths.ga',
+            MATCHER_ADDRESS: 'https://testnet1.earthsnodes.com',
+            DATAFEED_ADDRESS: 'https://marketdata.earths.ga'
         }));
 
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|local|data|file|chrome-extension):/);
     $qProvider.errorOnUnhandledRejections(false);
     $sceDelegateProvider.resourceUrlWhitelist([
         'self',
-        'https://test.coinomat.com/api/**',
-        'https://coinomat.com/api/**',
-        'https://marketdata.wavesplatform.com/**'
+        'https://test.coinomat.earths.ga/api/**',
+        'https://coinomat.earths.ga/api/**',
+        'https://marketdata.earths.ga/**'
     ]);
 
     // Globally disables all ARIA warnings.
@@ -90,7 +90,7 @@ function AngularApplicationConfig($provide, $compileProvider, $validatorProvider
         'optionally starting with \'1W\'');
 
     $validatorProvider.addMethod('decimal', function (value, element, maxDigits) {
-        maxDigits = angular.isNumber(maxDigits) ? maxDigits : Currency.WAVES.precision;
+        maxDigits = angular.isNumber(maxDigits) ? maxDigits : Currency.EARTHS.precision;
         var regex = new RegExp('^(?:-?\\d+)?(?:\\.\\d{0,' + maxDigits + '})?$');
         return this.optional(element) || regex.test(value);
     }, 'Amount is expected with a dot (.) as a decimal separator with no more than {0} fraction digits');
@@ -144,9 +144,8 @@ function AngularApplicationRun(rest, applicationConstants, notificationService, 
         timeout: 10000 // milliseconds
     });
     var url = applicationConstants.NODE_ADDRESS;
-    //var url = 'http://52.28.66.217:6869';
-    //var url = 'http://52.77.111.219:6869';
-    //var url = 'http://127.0.0.1:6869';
+    //var url = 'http://52.210.14.4:7779';
+    //var url = 'http://127.0.0.1:7779';
     //var url = 'http://127.0.0.1:8089';
     rest.setBaseUrl(url);
 

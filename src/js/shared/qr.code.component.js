@@ -41,7 +41,7 @@
 
     angular
         .module('app.shared')
-        .component('wavesQrCode', {
+        .component('earthsQrCode', {
             controller: QrCodeController,
             bindings: {
                 size: '<',

@@ -86,7 +86,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexOrderbook', {
+        .component('earthsDexOrderbook', {
             controller: OrderbookController,
             bindings: {
                 type: '@',

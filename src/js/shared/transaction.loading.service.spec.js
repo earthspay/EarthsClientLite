@@ -9,7 +9,7 @@ describe('Transaction.Loading.Service', function() {
         };
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.shared'));
 
     // Injection of dependencies

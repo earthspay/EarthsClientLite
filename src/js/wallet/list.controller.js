@@ -3,7 +3,7 @@
 
     var TRANSACTIONS_TO_LOAD = 100;
 
-    function WavesWalletListController($scope, $interval, events, applicationContext,
+    function EarthsWalletListController($scope, $interval, events, applicationContext,
                                        apiService, transactionLoadingService, dialogService) {
         var ctrl = this;
         var refreshPromise;
@@ -11,11 +11,11 @@
 
         function sendCommandEvent(event, currency) {
             var assetWallet = findWalletByCurrency(currency);
-            var wavesWallet = findWalletByCurrency(Currency.WAVES);
+            var earthsWallet = findWalletByCurrency(Currency.EARTHS);
 
             $scope.$broadcast(event, {
                 assetBalance: assetWallet.balance,
-                wavesBalance: wavesWallet.balance
+                earthsBalance: earthsWallet.balance
             });
         }
 
@@ -39,7 +39,7 @@
                 depositWith: Currency.BTC
             },
             {
-                balance: new Money(0, Currency.WAVES),
+                balance: new Money(0, Currency.EARTHS),
                 depositWith: Currency.BTC
             },
             {
@@ -90,7 +90,7 @@
 
             if (id === Currency.BTC.id ||
                 id === Currency.ETH.id ||
-                id === Currency.WAVES.id ||
+                id === Currency.EARTHS.id ||
                 id === Currency.LTC.id ||
                 id === Currency.ZEC.id ||
                 id === Currency.BCH.id
@@ -108,7 +108,7 @@
         }
 
         function deposit (wallet) {
-            if (wallet.balance.currency === Currency.WAVES) {
+            if (wallet.balance.currency === Currency.EARTHS) {
                 depositFromCard(wallet.balance.currency);
             } else if (wallet.balance.currency === Currency.TRY) {
                 dialogService.open('#digilira-dialog');
@@ -141,8 +141,8 @@
         function refreshWallets() {
             apiService.address.balance(applicationContext.account.address)
                 .then(function (response) {
-                    var wavesWallet = findWalletByCurrency(Currency.WAVES);
-                    wavesWallet.balance = Money.fromCoins(response.balance, Currency.WAVES);
+                    var earthsWallet = findWalletByCurrency(Currency.EARTHS);
+                    earthsWallet.balance = Money.fromCoins(response.balance, Currency.EARTHS);
                 });
 
             apiService.assets.balance(applicationContext.account.address).then(function (response) {
@@ -196,10 +196,10 @@
         }
     }
 
-    WavesWalletListController.$inject = ['$scope', '$interval', 'wallet.events', 'applicationContext',
+    EarthsWalletListController.$inject = ['$scope', '$interval', 'wallet.events', 'applicationContext',
                                          'apiService', 'transactionLoadingService', 'dialogService'];
 
     angular
         .module('app.wallet')
-        .controller('walletListController', WavesWalletListController);
+        .controller('walletListController', EarthsWalletListController);
 })();

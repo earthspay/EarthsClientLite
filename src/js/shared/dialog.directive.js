@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function WavesDialogController($scope, dialogService) {
+    function EarthsDialogController($scope, dialogService) {
         var defaults = {
             isError: false,
             cancelButtonVisible: true,
@@ -43,8 +43,8 @@
         };
     }
 
-    function WavesDialogLink(scope, element) {
-        element.addClass('wavesPop');
+    function EarthsDialogLink(scope, element) {
+        element.addClass('earthsPop');
 
         if (!scope.global) {
             element.addClass('recyclable');
@@ -53,11 +53,11 @@
 
     angular
         .module('app.shared')
-        .directive('wavesDialog', function WavesDialogDirective() {
+        .directive('earthsDialog', function EarthsDialogDirective() {
 
             return {
                 restrict: 'A',
-                controller: ['$scope', 'dialogService', WavesDialogController],
+                controller: ['$scope', 'dialogService', EarthsDialogController],
                 transclude: true,
                 scope: {
                     closeable: '=?',
@@ -73,7 +73,7 @@
                     global: '=?',
                     noSupportLink: '=?'
                 },
-                link: WavesDialogLink,
+                link: EarthsDialogLink,
                 templateUrl: 'shared/dialog.directive'
             };
         });

@@ -3,7 +3,7 @@
 
     angular
         .module('app.shared')
-        .directive('focusMe', ['$timeout', function WavesFocusDirective($timeout) {
+        .directive('focusMe', ['$timeout', function EarthsFocusDirective($timeout) {
             return {
                 restrict: 'A',
                 link: function (scope, element, attributes) {

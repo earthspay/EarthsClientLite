@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var FEE_CURRENCY = Currency.WAVES;
+    var FEE_CURRENCY = Currency.EARTHS;
 
     function LeasingFormController($timeout, constants, applicationContext,
                                    apiService, dialogService, notificationService, transactionBroadcast,
@@ -10,11 +10,11 @@
         var minimumFee = new Money(constants.MINIMUM_TRANSACTION_FEE, FEE_CURRENCY);
 
         ctrl.fee = minimumFee;
-        ctrl.availableBalance = Money.fromCoins(0, Currency.WAVES);
+        ctrl.availableBalance = Money.fromCoins(0, Currency.EARTHS);
 
         ctrl.broadcast = new transactionBroadcast.instance(apiService.leasing.lease,
             function (transaction) {
-                var amount = Money.fromCoins(transaction.amount, Currency.WAVES);
+                var amount = Money.fromCoins(transaction.amount, Currency.EARTHS);
                 var address = transaction.recipient;
                 var displayMessage = 'Leased ' + amount.formatAmount(true) + ' of ' +
                     amount.currency.displayName +
@@ -85,7 +85,7 @@
             var amount = Money.fromTokens(ctrl.amount, ctrl.availableBalance.currency);
             var transferFee = ctrl.fee;
 
-            // We assume here that amount and fee are in Waves, however it's not hardcoded
+            // We assume here that amount and fee are in Earths, however it's not hardcoded
             var leasingCost = amount.plus(transferFee);
             if (leasingCost.greaterThan(ctrl.availableBalance)) {
                 notificationService.error('Not enough ' + FEE_CURRENCY.displayName + ' for the leasing transaction');
@@ -127,7 +127,7 @@
         function reset() {
             ctrl.amount = '0';
             ctrl.recipient = '';
-            ctrl.confirm.amount = Money.fromTokens(0, Currency.WAVES);
+            ctrl.confirm.amount = Money.fromTokens(0, Currency.EARTHS);
             ctrl.confirm.fee = minimumFee;
         }
     }
@@ -138,7 +138,7 @@
 
     angular
         .module('app.leasing')
-        .component('wavesLeasingLeaseForm', {
+        .component('earthsLeasingLeaseForm', {
             controller: LeasingFormController,
             templateUrl: 'leasing/lease.form.component'
         });

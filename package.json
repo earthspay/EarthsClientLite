@@ -1,10 +1,10 @@
 {
-  "name": "waves-lite-client",
+  "name": "earths-lite-client",
   "version": "0.5.22",
-  "description": "A lite client for the Waves platform",
+  "description": "A lite client for the Earths platform",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wavesplatform/WavesClientLite.git"
+    "url": "https://github.com/earthspay/EarthsClientLite.git"
   },
   "license": "Apache-2.0",
   "engines": {

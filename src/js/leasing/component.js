@@ -64,7 +64,7 @@
 
     angular
         .module('app.leasing')
-        .component('wavesLeasing', {
+        .component('earthsLeasing', {
             controller: LeasingController,
             templateUrl: 'leasing/component'
         });

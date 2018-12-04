@@ -1,6 +1,6 @@
 <img class="wPop-header" ng-src="img/{{image}}"/>
-<div class="wavesPop-content" ng-transclude></div>
-<div class="wavesPop-content-buttons button-row" ng-show="showButtons">
+<div class="earthsPop-content" ng-transclude></div>
+<div class="earthsPop-content-buttons button-row" ng-show="showButtons">
   <button class="wButton wButton-dialog fade tooltip-1" ng-class="[{wButtonDanger: isError}]"
           title="{{::tooltip}}" ng-click="onOk()" ng-disabled="!okButtonEnabled">
     {{::okButtonCaption}}
@@ -10,5 +10,5 @@
           ng-class="[{wButtonDanger: isError}]" ng-click="onCancel()">
     {{::cancelButtonCaption}}
   </button>
-  <waves-support-link ng-if="::!noSupportLink" class="dark"></waves-support-link>
+  <earths-support-link ng-if="::!noSupportLink" class="dark"></earths-support-link>
 </div>

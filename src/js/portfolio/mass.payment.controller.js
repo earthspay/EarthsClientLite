@@ -6,17 +6,17 @@
     var FIRST_TRANSACTIONS_COUNT = 10;
     var LOADING_STAGE = 'loading';
     var PROCESSING_STAGE = 'processing';
-    var ZERO_MONEY = Money.fromTokens(0, Currency.WAVES);
+    var ZERO_MONEY = Money.fromTokens(0, Currency.EARTHS);
 
     function ValidationError(message) {
         this.message = message;
     }
 
-    function WavesMassPaymentController ($scope, $window, $timeout, constants, events, applicationContext, autocomplete,
+    function EarthsMassPaymentController ($scope, $window, $timeout, constants, events, applicationContext, autocomplete,
                                          notificationService, assetService, dialogService,
                                          transactionBroadcast, apiService) {
         var mass = this;
-        var minimumFee = new Money(constants.MINIMUM_TRANSACTION_FEE, Currency.WAVES);
+        var minimumFee = new Money(constants.MINIMUM_TRANSACTION_FEE, Currency.EARTHS);
         var transactions;
 
         mass.summary = {
@@ -43,7 +43,7 @@
             rules: {
                 massPayFee: {
                     required: true,
-                    decimal: Currency.WAVES.precision,
+                    decimal: Currency.EARTHS.precision,
                     min: minimumFee.toTokens()
                 }
             },
@@ -69,13 +69,13 @@
         cleanup();
 
         $scope.$on(events.ASSET_MASSPAY, function (event, eventData) {
-            mass.wavesBalance = eventData.wavesBalance;
-            mass.assetBalance = eventData.wavesBalance;
+            mass.earthsBalance = eventData.earthsBalance;
+            mass.assetBalance = eventData.earthsBalance;
             if (eventData.assetId) {
                 mass.assetBalance = applicationContext.cache.assets[eventData.assetId].balance;
             }
 
-            mass.sendingWaves = mass.assetBalance.currency === Currency.WAVES;
+            mass.sendingEarths = mass.assetBalance.currency === Currency.EARTHS;
 
             cleanup();
 
@@ -162,8 +162,8 @@
                 var transferCurrency = mass.assetBalance.currency;
                 var totalTransactions = 0;
                 var totalAmount = Money.fromCoins(0, transferCurrency);
-                var totalFee = Money.fromCoins(0, Currency.WAVES);
-                var fee = Money.fromTokens(mass.autocomplete.getFeeAmount(), Currency.WAVES);
+                var totalFee = Money.fromCoins(0, Currency.EARTHS);
+                var fee = Money.fromTokens(mass.autocomplete.getFeeAmount(), Currency.EARTHS);
                 var minimumPayment = Money.fromCoins(1, transferCurrency);
                 _.forEach(mass.inputPayments, function (transfer) {
                     if (isNaN(transfer.amount)) {
@@ -245,12 +245,12 @@
         }
 
         function submitPayment() {
-            var paymentCost = !mass.sendingWaves ?
+            var paymentCost = !mass.sendingEarths ?
                 mass.summary.totalFee :
                 mass.summary.totalFee.plus(mass.summary.totalAmount);
 
-            if (paymentCost.greaterThan(mass.wavesBalance)) {
-                notificationService.error('Not enough Waves to make mass payment');
+            if (paymentCost.greaterThan(mass.earthsBalance)) {
+                notificationService.error('Not enough Earths to make mass payment');
 
                 return false;
             }
@@ -326,19 +326,19 @@
             mass.stage = LOADING_STAGE;
             mass.invalidPayment = false;
 
-            mass.confirm.amount = Money.fromTokens(0, Currency.WAVES);
+            mass.confirm.amount = Money.fromTokens(0, Currency.EARTHS);
             mass.confirm.recipients = 0;
-            mass.confirm.fee = Money.fromTokens(0, Currency.WAVES);
+            mass.confirm.fee = Money.fromTokens(0, Currency.EARTHS);
 
             mass.autocomplete.defaultFee(constants.MINIMUM_TRANSACTION_FEE);
         }
     }
 
-    WavesMassPaymentController.$inject = ['$scope', '$window', '$timeout', 'constants.ui', 'portfolio.events',
+    EarthsMassPaymentController.$inject = ['$scope', '$window', '$timeout', 'constants.ui', 'portfolio.events',
         'applicationContext', 'autocomplete.fees',
         'notificationService', 'assetService', 'dialogService', 'transactionBroadcast', 'apiService'];
 
     angular
         .module('app.portfolio')
-        .controller('massPaymentController', WavesMassPaymentController);
+        .controller('massPaymentController', EarthsMassPaymentController);
 })();

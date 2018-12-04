@@ -124,7 +124,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexOrderCreator', {
+        .component('earthsDexOrderCreator', {
             controller: OrderCreatorController,
             bindings: {
                 pair: '<',

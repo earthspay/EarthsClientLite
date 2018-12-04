@@ -14,7 +14,7 @@ describe('Mass.Payment.Controller', function() {
     var address = '3N9UuGeWuDt9NfWbC5oEACHyRoeEMApXAeq';
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.portfolio'));
 
     // Injection of dependencies
@@ -54,15 +54,15 @@ describe('Mass.Payment.Controller', function() {
         });
     }));
 
-    function initControllerAssets(assetBalance, wavesBalance) {
+    function initControllerAssets(assetBalance, earthsBalance) {
         if (!assetBalance)
             assetBalance = Money.fromTokens(1000, Currency.USD);
 
-        if (!wavesBalance)
-            wavesBalance = Money.fromTokens(20, Currency.WAVES);
+        if (!earthsBalance)
+            earthsBalance = Money.fromTokens(20, Currency.EARTHS);
 
         var assetId;
-        if (assetBalance.currency !== Currency.WAVES) {
+        if (assetBalance.currency !== Currency.EARTHS) {
             assetId = assetBalance.currency.id;
             applicationContext.cache.assets[assetId] = {
                 balance: assetBalance
@@ -71,7 +71,7 @@ describe('Mass.Payment.Controller', function() {
 
         $rootScope.$broadcast(events.ASSET_MASSPAY, {
             assetId: assetId,
-            wavesBalance: wavesBalance
+            earthsBalance: earthsBalance
         });
     }
 
@@ -89,14 +89,14 @@ describe('Mass.Payment.Controller', function() {
     it('should correctly handle the MASS_PAY event', function () {
         initControllerAssets();
 
-        expect(controller.sendingWaves).toBe(false);
+        expect(controller.sendingEarths).toBe(false);
         expect(dialogService.open).toHaveBeenCalledWith('#asset-mass-pay-dialog');
     });
 
-    it('should understand that waves are being sent', function () {
-        initControllerAssets(Money.fromTokens(10, Currency.WAVES), Money.fromTokens(10, Currency.WAVES));
+    it('should understand that earths are being sent', function () {
+        initControllerAssets(Money.fromTokens(10, Currency.EARTHS), Money.fromTokens(10, Currency.EARTHS));
 
-        expect(controller.sendingWaves).toBe(true);
+        expect(controller.sendingEarths).toBe(true);
 
         expect(dialogService.open).toHaveBeenCalledWith('#asset-mass-pay-dialog');
     });
@@ -250,8 +250,8 @@ describe('Mass.Payment.Controller', function() {
         expect(controller.summary.totalFee.toTokens()).toEqual(0.004);
     });
 
-    it('should not confirm payment if there is not enough Waves when paying USD', function () {
-        initControllerAssets(Money.fromTokens(1000, Currency.USD), Money.fromTokens(0.00399, Currency.WAVES));
+    it('should not confirm payment if there is not enough Earths when paying USD', function () {
+        initControllerAssets(Money.fromTokens(1000, Currency.USD), Money.fromTokens(0.00399, Currency.EARTHS));
 
         spyOn(controller.autocomplete, 'getFeeAmount').and.returnValue('0.002');
         spyOn(controller.broadcast, 'setTransaction');
@@ -272,12 +272,12 @@ describe('Mass.Payment.Controller', function() {
         timeout.flush();
 
         expect(controller.submitPayment()).toBe(false);
-        expect(controller.sendingWaves).toBeFalsy();
+        expect(controller.sendingEarths).toBeFalsy();
         expect(notificationService.error).toHaveBeenCalled();
     });
 
-    it('should not confirm payment if there is not enough Waves when paying Waves', function () {
-        var balance = Money.fromTokens(1000, Currency.WAVES);
+    it('should not confirm payment if there is not enough Earths when paying Earths', function () {
+        var balance = Money.fromTokens(1000, Currency.EARTHS);
         initControllerAssets(balance, balance);
 
         spyOn(controller.autocomplete, 'getFeeAmount').and.returnValue('1');
@@ -300,7 +300,7 @@ describe('Mass.Payment.Controller', function() {
 
         expect(controller.submitPayment()).toBe(false);
 
-        expect(controller.sendingWaves).toBe(true);
+        expect(controller.sendingEarths).toBe(true);
         expect(notificationService.error).toHaveBeenCalled();
     });
 
@@ -327,7 +327,7 @@ describe('Mass.Payment.Controller', function() {
 
         expect(controller.submitPayment()).toBe(false);
 
-        expect(controller.sendingWaves).toBe(false);
+        expect(controller.sendingEarths).toBe(false);
         expect(notificationService.error).toHaveBeenCalled();
     });
 
@@ -359,10 +359,10 @@ describe('Mass.Payment.Controller', function() {
         expect(controller.confirm.amount.toTokens()).toEqual(999);
         expect(controller.confirm.amount.currency).toEqual(Currency.USD);
         expect(controller.confirm.fee.toTokens()).toEqual(0.02);
-        expect(controller.confirm.fee.currency).toEqual(Currency.WAVES);
+        expect(controller.confirm.fee.currency).toEqual(Currency.EARTHS);
         expect(controller.confirm.recipients).toEqual(2);
 
-        expect(controller.sendingWaves).toBe(false);
+        expect(controller.sendingEarths).toBe(false);
         expect(notificationService.error).not.toHaveBeenCalled();
         expect(dialogService.open).toHaveBeenCalledWith('#asset-mass-pay-confirmation');
         expect(dialogService.close).toHaveBeenCalled();

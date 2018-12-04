@@ -3,7 +3,7 @@
 
     var DEFAULT_ERROR_MESSAGE = 'Connection is lost';
 
-    function WavesWalletDepositController($scope, events, coinomatService, dialogService, notificationService,
+    function EarthsWalletDepositController($scope, events, coinomatService, dialogService, notificationService,
                                           applicationContext, bitcoinUriService, utilsService, $element) {
 
         var ctrl = this;
@@ -38,7 +38,7 @@
 
         ctrl.fiat = {
             verificationLink: 'https://go.idnow.de/coinomat/userdata/' + applicationContext.account.address,
-            email: 'support@coinomat.com'
+            email: 'support@coinomat.earths.ga'
         };
 
         ctrl.refreshBTCUri = function () {
@@ -144,12 +144,12 @@
         }
     }
 
-    WavesWalletDepositController.$inject = [
+    EarthsWalletDepositController.$inject = [
         '$scope', 'wallet.events', 'coinomatService', 'dialogService', 'notificationService',
         'applicationContext', 'bitcoinUriService', 'utilsService', '$element'
     ];
 
     angular
         .module('app.wallet')
-        .controller('walletDepositController', WavesWalletDepositController);
+        .controller('walletDepositController', EarthsWalletDepositController);
 })();

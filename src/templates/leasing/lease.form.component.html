@@ -23,7 +23,7 @@
   </table>
 </form>
 
-<div id="start-leasing-confirmation" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!$ctrl.broadcast.pending" on-dialog-ok="$ctrl.broadcastTransaction()">
+<div id="start-leasing-confirmation" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!$ctrl.broadcast.pending" on-dialog-ok="$ctrl.broadcastTransaction()">
   <div class="dialog-confirmation">
     <p class="dialog-text">You are going to lease <span class="confirmation-value">{{$ctrl.confirm.amount | moneyLong:true}}</span> with
       <span class="confirmation-value">{{$ctrl.confirm.fee | moneyLong:true}}</span> fee to the address<br/>

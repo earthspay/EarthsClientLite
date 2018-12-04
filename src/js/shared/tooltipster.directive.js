@@ -3,7 +3,7 @@
 
     angular
         .module('app.shared')
-        .directive('tooltipster', ['constants.tooltip', function WavesTooltipsterDirective(constants) {
+        .directive('tooltipster', ['constants.tooltip', function EarthsTooltipsterDirective(constants) {
 
             return {
                 restrict: 'A',

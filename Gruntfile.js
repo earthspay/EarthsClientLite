@@ -90,26 +90,26 @@ module.exports = function (grunt) {
                 testnet: {
                     name: 'testnet',
                     code: 'T',
-                    server: 'https://testnet1.wavesnodes.com',
-                    coinomat: 'https://test.coinomat.com',
-                    matcher: 'https://testnet1.wavesnodes.com',
-                    datafeed: 'https://marketdata.wavesplatform.com'
+                    server: 'https://testnet1.earthsnodes.com',
+                    coinomat: 'https://test.coinomat.earths.ga',
+                    matcher: 'https://testnet1.earthsnodes.com',
+                    datafeed: 'https://marketdata.earths.ga'
                 },
                 mainnet: {
                     name: 'mainnet',
                     code: 'W',
-                    server: 'https://nodes.wavesnodes.org',
-                    coinomat: 'https://coinomat.com',
-                    matcher: 'https://matcher.wavesnodes.org',
-                    datafeed: 'https://marketdata.wavesnodes.org'
+                    server: 'https://nodes.earthsnodes.org',
+                    coinomat: 'https://coinomat.earths.ga',
+                    matcher: 'https://matcher.earthsnodes.org',
+                    datafeed: 'https://marketdata.earthsnodes.org'
                 },
                 devnet: {
                     name: 'devnet',
                     code: 'D',
-                    server: 'http://13.229.61.140:16869/',
-                    coinomat: 'https://test.coinomat.com',
-                    matcher: 'http://52.28.66.217:6886',
-                    datafeed: 'http://marketdata.wavesplatform.com'
+                    server: 'http://52.210.14.4:17779/',
+                    coinomat: 'https://test.coinomat.earths.ga',
+                    matcher: 'http://52.210.14.4:7776',
+                    datafeed: 'http://marketdata.earths.ga'
                 },
                 chrome: {
                     testnet: {
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
                 'bower_components/growl/javascripts/jquery.growl.js',
                 'bower_components/jquery-validation/dist/jquery.validate.js',
                 'bower_components/tooltipster/js/jquery.tooltipster.min.js',
-                'bower_components/waves-angular-validate/src/angular-validate.js',
+                'bower_components/earths-angular-validate/src/angular-validate.js',
                 'bower_components/qrious/dist/umd/qrious.js',
 
                 'bower_components/d3/d3.min.js',
@@ -165,7 +165,7 @@ module.exports = function (grunt) {
 
                 'src/js/vendor/jquery.modal.js',
 
-                'bower_components/wavesplatform-core-js/distr/wavesplatform-core.js'
+                'bower_components/earthspay-core-js/distr/earthspay-core.js'
             ],
             application: [
                 // project sources
@@ -527,14 +527,14 @@ module.exports = function (grunt) {
             },
             testnet: {
                 options: {
-                    bucket: 'testnet.waveswallet.io'
+                    bucket: 'testnet.earthswallet.io'
                 },
                 cwd: 'distr/<%= meta.configurations.testnet.name %>',
                 src: '**/*'
             },
             mainnet: {
                 options: {
-                    bucket: 'waveswallet.io'
+                    bucket: 'earthswallet.io'
                 },
                 cwd: 'distr/<%= meta.configurations.mainnet.name %>',
                 src: '**/*'
@@ -582,7 +582,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-webstore-upload');
-    grunt.loadNpmTasks('waves-grunt-github-releaser');
+    grunt.loadNpmTasks('earths-grunt-github-releaser');
 
     grunt.registerTask('emptyChangelog', 'Creates an empty changelog', function() {
         grunt.file.write('distr/CHANGELOG.tmp', '');

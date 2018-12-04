@@ -1,12 +1,12 @@
 (function () {
     'use strict';
 
-    var FEE_CURRENCY = Currency.WAVES;
+    var FEE_CURRENCY = Currency.EARTHS;
     var DEFAULT_ERROR_MESSAGE = 'The Internet connection is lost';
 
     // TODO : add the `exceptField` attribute or a list of all the needed fields.
 
-    function WavesTransactionHistoryController($scope, events, constants, applicationContext,
+    function EarthsTransactionHistoryController($scope, events, constants, applicationContext,
                                                apiService, leasingRequestService, notificationService, dialogService) {
         var ctrl = this;
         var minimumFee = new Money(constants.MINIMUM_TRANSACTION_FEE, FEE_CURRENCY);
@@ -67,13 +67,13 @@
         }
     }
 
-    WavesTransactionHistoryController.$inject = ['$scope', 'ui.events', 'constants.ui', 'applicationContext',
+    EarthsTransactionHistoryController.$inject = ['$scope', 'ui.events', 'constants.ui', 'applicationContext',
         'apiService', 'leasingRequestService', 'notificationService', 'dialogService'];
 
     angular
         .module('app.shared')
-        .component('wavesTransactionHistory', {
-            controller: WavesTransactionHistoryController,
+        .component('earthsTransactionHistory', {
+            controller: EarthsTransactionHistoryController,
             bindings: {
                 heading: '@',
                 transactions: '<',

@@ -5,7 +5,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexHistory', {
+        .component('earthsDexHistory', {
             controller: HistoryController,
             bindings: {
                 pair: '<',

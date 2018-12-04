@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    var DEFAULT_FEE = Money.fromTokens(0.001, Currency.WAVES);
+    var DEFAULT_FEE = Money.fromTokens(0.001, Currency.EARTHS);
     var ALIAS_MINIMUM_LENGTH = 4;
     var ALIAS_MAXIMUM_LENGTH = 30;
 
-    function WavesCreateAliasController($scope, $timeout, events, applicationContext,
+    function EarthsCreateAliasController($scope, $timeout, events, applicationContext,
                                         dialogService, notificationService, transactionBroadcast,
                                         formattingService, aliasRequestService, apiService) {
         var ctrl = this;
@@ -89,11 +89,11 @@
         }
     }
 
-    WavesCreateAliasController.$inject = ['$scope', '$timeout', 'navigation.events', 'applicationContext',
+    EarthsCreateAliasController.$inject = ['$scope', '$timeout', 'navigation.events', 'applicationContext',
                                           'dialogService', 'notificationService', 'transactionBroadcast',
                                           'formattingService', 'aliasRequestService', 'apiService'];
 
     angular
         .module('app.navigation')
-        .controller('createAliasController', WavesCreateAliasController);
+        .controller('createAliasController', EarthsCreateAliasController);
 })();

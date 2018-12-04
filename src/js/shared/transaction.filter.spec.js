@@ -9,7 +9,7 @@ describe('Transaction.Filter', function() {
         };
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.shared'));
     beforeEach(module('app.ui'));
 

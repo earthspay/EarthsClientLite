@@ -42,9 +42,9 @@ function AngularApplicationConfig($provide, $compileProvider, $validatorProvider
     $provide.constant(applicationSettings,
         angular.extend(applicationSettings, {
             CLIENT_VERSION: '0.4.1a',
-            NODE_ADDRESS: 'https://testnet1.earthsnodes.com',
+            NODE_ADDRESS: 'https://testnet1.earthsnodes.earths.ga',
             COINOMAT_ADDRESS: 'https://coinomat.earths.ga',
-            MATCHER_ADDRESS: 'https://testnet1.earthsnodes.com',
+            MATCHER_ADDRESS: 'https://testnet1.earthsnodes.earths.ga',
             DATAFEED_ADDRESS: 'https://marketdata.earths.ga'
         }));
 

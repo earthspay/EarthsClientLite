@@ -90,18 +90,18 @@ module.exports = function (grunt) {
                 testnet: {
                     name: 'testnet',
                     code: 'T',
-                    server: 'https://testnet1.earthsnodes.com',
+                    server: 'https://testnet1.earthsnodes.earths.ga',
                     coinomat: 'https://test.coinomat.earths.ga',
-                    matcher: 'https://testnet1.earthsnodes.com',
+                    matcher: 'https://testnet1.earthsnodes.earths.ga',
                     datafeed: 'https://marketdata.earths.ga'
                 },
                 mainnet: {
                     name: 'mainnet',
                     code: 'W',
-                    server: 'https://nodes.earthsnodes.org',
+                    server: 'https://nodes.earthsnodes.earths.ga',
                     coinomat: 'https://coinomat.earths.ga',
-                    matcher: 'https://matcher.earthsnodes.org',
-                    datafeed: 'https://marketdata.earthsnodes.org'
+                    matcher: 'https://matcher.earthsnodes.earths.ga',
+                    datafeed: 'https://marketdata.earthsnodes.earths.ga'
                 },
                 devnet: {
                     name: 'devnet',

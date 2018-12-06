@@ -3,7 +3,7 @@ describe('Application.Context', function() {
     var assetId = 'GAXAj8T4pSjunDqpz6Q3bit4fJJN9PD4t8AK8JZVSa5u';
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.ui'));
 
     // Injection of dependencies

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var FIXED_REISSUE_FEE = new Money(1, Currency.WAVES);
+    var FIXED_REISSUE_FEE = new Money(1, Currency.EARTHS);
 
-    function WavesAssetReissueController($scope, $timeout, constants, events, applicationContext, assetService,
+    function EarthsAssetReissueController($scope, $timeout, constants, events, applicationContext, assetService,
                                          dialogService, notificationService, formattingService, apiService,
                                          transactionBroadcast) {
         var reissue = this;
@@ -47,7 +47,7 @@
             reissue.assetName = asset.currency.displayName;
             reissue.totalTokens = asset.totalTokens;
             reissue.asset = asset;
-            reissue.wavesBalance = eventData.wavesBalance;
+            reissue.earthsBalance = eventData.earthsBalance;
 
             // update validation options and check how it affects form validation
             reissue.validationOptions.rules.assetAmount.decimal = asset.currency.precision;
@@ -71,7 +71,7 @@
                 // prevent dialog from closing
                 return false;
 
-            if (reissue.fee.greaterThan(reissue.wavesBalance)) {
+            if (reissue.fee.greaterThan(reissue.earthsBalance)) {
                 notificationService.error('Not enough funds for the reissue transaction fee');
 
                 return false;
@@ -110,16 +110,16 @@
 
         function resetReissueForm() {
             reissue.amount = '0';
-            reissue.confirm.amount = Money.fromTokens(0, Currency.WAVES);
+            reissue.confirm.amount = Money.fromTokens(0, Currency.EARTHS);
             reissue.confirm.fee = reissue.fee;
         }
     }
 
-    WavesAssetReissueController.$inject = ['$scope', '$timeout', 'constants.ui', 'portfolio.events',
+    EarthsAssetReissueController.$inject = ['$scope', '$timeout', 'constants.ui', 'portfolio.events',
         'applicationContext', 'assetService', 'dialogService', 'notificationService',
         'formattingService', 'apiService', 'transactionBroadcast'];
 
     angular
         .module('app.portfolio')
-        .controller('assetReissueController', WavesAssetReissueController);
+        .controller('assetReissueController', EarthsAssetReissueController);
 })();

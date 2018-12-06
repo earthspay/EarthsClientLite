@@ -99,7 +99,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexUserOrders', {
+        .component('earthsDexUserOrders', {
             controller: UserOrdersController,
             bindings: {
                 pair: '<',

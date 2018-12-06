@@ -3,7 +3,7 @@
 
     angular
         .module('app.shared')
-        .directive('integerInputRestrictor', [function WavesIntegerInputRestrictorDirective() {
+        .directive('integerInputRestrictor', [function EarthsIntegerInputRestrictorDirective() {
             return {
                 restrict: 'A',
                 require: 'ngModel',

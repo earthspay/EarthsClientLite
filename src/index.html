@@ -1,13 +1,13 @@
 <!--
 /******************************************************************************
-* Copyright © 2016 The Waves Developers.                                     *
+* Copyright © 2016 The Earths Developers.                                     *
 *                                                                            *
 * See the LICENSE file at                                                    *
 * the top-level directory of this distribution for the individual copyright  *
 * holder information and the developer policies on copyright and licensing.  *
 *                                                                            *
 * Unless otherwise agreed in a custom licensing agreement, no part of the    *
-* Waves software, including this file may be copied, modified, propagated    *
+* Earths software, including this file may be copied, modified, propagated    *
 * or distributed except according to the terms contained in the LICENSE file *
 *                                                                            *
 * Removal or modification of this copyright notice is prohibited.            *
@@ -19,7 +19,7 @@
 <html ng-app="app" ng-csp>
 <head>
   <meta charset="utf-8">
-  <title>Waves Lite Client</title>
+  <title>Earths Lite Client</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSS BEGIN -->
   <link rel="stylesheet" href="../bower_components/angular/angular-csp.css">
@@ -47,8 +47,8 @@
     <div class="banner-content">
       <img src="img/warning_icon.svg"/> Google is shutting down its Chrome Web Store.
       Save your secret phrase (SEED) and start using our new desktop application.
-      Download it from the official Waves site <a href="https://wavesplatform.com" target="_blank">wavesplatform.com</a>,
-      or use the web client <a href="https://client.wavesplatform.com" target="_blank">client.wavesplatform.com</a>
+      Download it from the official Earths site <a href="https://earths.ga" target="_blank">earths.ga</a>,
+      or use the web client <a href="https://client.earths.ga" target="_blank">client.earths.ga</a>
     </div>
   </div>
   <table id="lockscreenTable">
@@ -66,7 +66,7 @@
         <!-- Accounts -->
         <div id="accounts">
           <h2 id="AccHeader">{{accounts.caption}}</h2>
-          <div class="wavesAccounts" ng-controller="accountListController as list" ng-show="accounts.mode === 'list'">
+          <div class="earthsAccounts" ng-controller="accountListController as list" ng-show="accounts.mode === 'list'">
             <p class="loginAccountDiv" ng-repeat="account in list.accounts track by $index">
                                     <span class="loginAccount fade" tooltipster tooltip-theme="tooltipster-theme1" title="Log into this account." ng-click="list.signIn(account)"> <br/>
                                         <b>{{::account.name}}</b> <span class="divider-1"></span> <small>{{::account.address}}</small>
@@ -84,7 +84,7 @@
             <br/>
 
             <!-- Remove Account popup -->
-            <div id="account-remove-popup" waves-dialog on-dialog-ok="list.removeAccount()" is-error="true" ok-button-caption="REMOVE">
+            <div id="account-remove-popup" earths-dialog on-dialog-ok="list.removeAccount()" is-error="true" ok-button-caption="REMOVE">
               <h2 class="sectionHeader">REMOVE ACCOUNT - NOTICE</h2>
               <p class="dialog-text">This feature completely removes the account from this device.</p>
               <p class="dialog-text">The account will not be eliminated or destroyed, but instead will not be shown anymore in the Accounts List at the client startup.</p>
@@ -118,7 +118,7 @@
               <span class="divider-2"></span>
               <button class="wButton fade" type="reset" ng-click="vm.back()">BACK</button>
 
-              <div id="seed-whitespace-popup" waves-dialog on-dialog-ok="vm.registerAccount()" closeable="false" ok-button-caption="PROCEED">
+              <div id="seed-whitespace-popup" earths-dialog on-dialog-ok="vm.registerAccount()" closeable="false" ok-button-caption="PROCEED">
                 <h2 class="sectionHeader">SEED NOTICE</h2>
                 <p class="dialog-text">Your wallet seed contains one or more trailing whitespace characters.</p>
                 <p class="dialog-text">A seed with a whitespace at the end and a seed without one are different, and will result in different addresses generated.</p>
@@ -128,12 +128,12 @@
             </form>
           </div>
 
-          <div id="login-wPop-new" waves-dialog ok-button-caption="I UNDERSTAND" on-dialog-ok="" cancel-button-visible="false" closeable="false">
+          <div id="login-wPop-new" earths-dialog ok-button-caption="I UNDERSTAND" on-dialog-ok="" cancel-button-visible="false" closeable="false">
             <h2 class="sectionHeader">NEW ACCOUNT</h2>
             <div class="plate-warning">
               <p class="dialog-text" style="font-weight: bold;">Treat your SEED (backup phrase) with care!</p>
               <p class="dialog-text">Only SEED can provide access to your wallet.</p>
-              <p class="dialog-text">1. Don't put your SEED anywhere except official<br/>Waves clients (look at the site domain).</p>
+              <p class="dialog-text">1. Don't put your SEED anywhere except official<br/>Earths clients (look at the site domain).</p>
               <p class="dialog-text">If someone else accesses it you will lose your funds.</p>
               <p class="dialog-text">2. Store your SEED safely, it is the only<br/>way to restore your wallet.</p>
             </div>
@@ -226,39 +226,39 @@
 
 <div id="wrapper" ng-switch-when="main-screen" ng-cloak>
   <!-- shared blocks -->
-  <div id="feat-not-active" waves-dialog global="true" show-buttons="false" is-error="true">
+  <div id="feat-not-active" earths-dialog global="true" show-buttons="false" is-error="true">
     <h2 class="sectionHeader">NOTICE</h2>
     <p class="dialog-text">This feature is still under development and not active during the alpha release.</p>
     <p class="dialog-text">Follow our social media channels to stay up to date with the latest improvements and developments.</p>
     <div class="modal-media">
-      <a href="https://blog.wavesplatform.com/" target="_blank"><img class="modal-media-img" src="img/blog_icon.svg" /></a>
-      <a href="https://twitter.com/wavesplatform" target="_blank"><img class="modal-media-img" src="img/twitter_icon.svg" /></a>
-      <a href="https://www.facebook.com/wavesplatform" target="_blank"><img class="modal-media-img" src="img/facebook_icon.svg" /></a>
-      <a href="http://slack.wavesplatform.com/" target="_blank"><img class="modal-media-img" src="img/slack_icon.svg" /></a>
-      <a href="https://www.reddit.com/r/Wavesplatform/" target="_blank"><img class="modal-media-img" src="img/reddit_icon.svg" /></a>
-      <a href="https://vk.com/wavesplatform" target="_blank"><img id="icon-blog" class="modal-media-img" src="img/vk_icon.svg" /></a>
+      <a href="https://blog.earths.ga/" target="_blank"><img class="modal-media-img" src="img/blog_icon.svg" /></a>
+      <a href="https://twitter.com/earthspay" target="_blank"><img class="modal-media-img" src="img/twitter_icon.svg" /></a>
+      <a href="https://www.facebook.com/earthspay" target="_blank"><img class="modal-media-img" src="img/facebook_icon.svg" /></a>
+      <a href="http://slack.earths.ga/" target="_blank"><img class="modal-media-img" src="img/slack_icon.svg" /></a>
+      <a href="https://www.reddit.com/r/Earthspay/" target="_blank"><img class="modal-media-img" src="img/reddit_icon.svg" /></a>
+      <a href="https://vk.com/earthspay" target="_blank"><img id="icon-blog" class="modal-media-img" src="img/vk_icon.svg" /></a>
     </div>
   </div>
   <!-- /shared blocks-->
 
   <!-- HEADER -->
   <header class="fFade noSelect" ng-controller="mainMenuController as menu">
-    <img id="topLogoH" src="img/topleftlogo_hor.svg" alt="Waves platform logo horizontal" />
+    <img id="topLogoH" src="img/topleftlogo_hor.svg" alt="Earths platform logo horizontal" />
     <div id="logoNversion2">
       <img src="img/topleftlogo.svg" />
       <p ng-class='{testnet: isTestnet()}'>{{::home.title}} <span class="wlcversion">{{::home.version}}</span></p>
     </div>
     <span id="version" class="centerIt">
                 <span>Address:</span>
-                <span id="wavesAccountAddress" class="clipSpan" tooltipster tooltip-theme="tooltipster-theme3" title="Copy the address to clipboard." ngclipboard data-clipboard-text="{{::menu.address}}" ngclipboard-success="clipboardOk()">{{::menu.address}}</span>
-                <span id="wavesAccountAddressQr" ng-click="menu.showAddressQr()">your address (QR)</span>
+                <span id="earthsAccountAddress" class="clipSpan" tooltipster tooltip-theme="tooltipster-theme3" title="Copy the address to clipboard." ngclipboard data-clipboard-text="{{::menu.address}}" ngclipboard-success="clipboardOk()">{{::menu.address}}</span>
+                <span id="earthsAccountAddressQr" ng-click="menu.showAddressQr()">your address (QR)</span>
                 <span class="divider-2"></span>
                 <span class="inlineParagraph">Block:</span> <span id="blockheight">{{menu.blockHeight}}</span>
             </span>
 
     <div class="noDisp">
-      <div id="address-qr-modal" waves-dialog global="true" no-support-link="true" cancel-button-visible="false" ok-button-caption="CLOSE">
-        <waves-qr-code size="300" value="::menu.addressQr"></waves-qr-code>
+      <div id="address-qr-modal" earths-dialog global="true" no-support-link="true" cancel-button-visible="false" ok-button-caption="CLOSE">
+        <earths-qr-code size="300" value="::menu.addressQr"></earths-qr-code>
       </div>
     </div>
 
@@ -266,14 +266,14 @@
       <a ng-click="menu.showBackupDialog()">
         <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-backup.svg" alt="Backup" title="Backup"/>
       </a>
-      <div id="header-wPop-backup" waves-dialog global="true" on-dialog-ok="menu.backup()" ok-button-caption="COPY" cancel-button-caption="CLOSE">
+      <div id="header-wPop-backup" earths-dialog global="true" on-dialog-ok="menu.backup()" ok-button-caption="COPY" cancel-button-caption="CLOSE">
         <h2 class="sectionHeader">ACCOUNT INFO BACKUP</h2>
         <p>This area contains your account's basic information. Click the <span class="fontBold">COPY</span> button in order to copy the contents to the clipboard or <span class="fontBold">CLOSE</span> to exit.</p></br>
         <form id="backupForm">
           <div class="plate-warning">
             <p class="dialog-text" style="font-weight: bold;">Treat your SEED (backup phrase) with care!</p>
             <p class="dialog-text">Only SEED can provide access to your wallet.</p>
-            <p class="dialog-text">1. Don't put your SEED anywhere except official<br/>Waves clients (look at the site domain).</p>
+            <p class="dialog-text">1. Don't put your SEED anywhere except official<br/>Earths clients (look at the site domain).</p>
             <p class="dialog-text">If someone else accesses it you will lose your funds.</p>
             <p class="dialog-text">2. Store your SEED safely, it is the only<br/>way to restore your wallet.</p>
           </div>
@@ -296,7 +296,7 @@
         <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-profile.svg" alt="User profile" title="User profile"/>
       </a>
       <div class="noDisp" ng-controller="createAliasController as create">
-        <div id="create-alias-dialog" waves-dialog global="true" ok-button-caption="CREATE" on-dialog-ok="create.confirmCreateAlias(create.form)">
+        <div id="create-alias-dialog" earths-dialog global="true" ok-button-caption="CREATE" on-dialog-ok="create.confirmCreateAlias(create.form)">
           <div class="existing-aliases">
             <h2 class="sectionHeader">YOUR ALIASES</h2>
             <div ng-if="create.aliasList !== null">
@@ -317,14 +317,14 @@
                 <td><input class="wInput form-control" name="aliasName" type="text" placeholder="Symbolic name" ng-model="create.alias"/></td>
               </tr>
               <tr>
-                <td>Waves fee</td>
+                <td>Earths fee</td>
                 <td>{{::create.fee.formatAmount(true)}} {{::create.fee.currency.displayName}}</td>
               </tr>
               </tbody>
             </table>
           </form>
         </div>
-        <div id="create-alias-confirmation" waves-dialog global="true" ok-button-caption="CONFIRM" ok-button-enabled="!create.broadcast.pending" on-dialog-ok="create.broadcastTransaction()">
+        <div id="create-alias-confirmation" earths-dialog global="true" ok-button-caption="CONFIRM" ok-button-enabled="!create.broadcast.pending" on-dialog-ok="create.broadcastTransaction()">
           <div class="dialog-confirmation">
             <p class="dialog-text">You are going to create a new alias <span class="confirmation-value">{{create.alias}}</span>
               for your current address.
@@ -337,7 +337,7 @@
         <img class="header-Icon fade" tooltipster tooltip-theme="tooltipster-theme2" src="img/uiTB-iconset-logout.svg" alt="Log out" title="Log out" />
       </a>
     </div>
-    <waves-support-link class="in-header light"></waves-support-link>
+    <earths-support-link class="in-header light"></earths-support-link>
   </header>
   <!-- / HEADER -->
 
@@ -345,7 +345,7 @@
     <!-- APPLICATION TAB SELECTORS -->
     <section id="tabs" class="fFade noSelect">
       <div id="tabs-Iconset" class="centerIt">
-        <span waves-tab
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="wallet"
@@ -354,7 +354,7 @@
               tooltip-html
               tooltip-theme="tooltipster-theme3"
               tooltip-title="<center><u>Wallet</u></center><br/>Area containing the main wallets."></span>
-        <span waves-tab
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="portfolio"
@@ -363,7 +363,7 @@
               tooltip-html
               tooltip-theme="tooltipster-theme3"
               tooltip-title="<center><u>Portfolio</u></center><br/>Display all your assets, both digital and physical,<br/>as well as allowing transfers."></span>
-        <span waves-tab
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="exchange"
@@ -371,17 +371,17 @@
               tooltipster
               tooltip-html
               tooltip-theme="tooltipster-theme3"
-              tooltip-title="<center><u>Waves Decentralized Exchange</u></center><br/>Access to Waves markets where you can<br/>conveniently buy, sell and trade tokens."></span>
-        <span waves-tab
+              tooltip-title="<center><u>Earths Decentralized Exchange</u></center><br/>Access to Earths markets where you can<br/>conveniently buy, sell and trade tokens."></span>
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="leasing"
-              caption="'Waves leasing tab'"
+              caption="'Earths leasing tab'"
               tooltipster
               tooltip-html
               tooltip-theme="tooltipster-theme3"
-              tooltip-title="<center><u>Leasing</u></center><br/>Lease your Waves<br/>to another wallet."></span>
-        <span waves-tab
+              tooltip-title="<center><u>Leasing</u></center><br/>Lease your Earths<br/>to another wallet."></span>
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="history"
@@ -390,7 +390,7 @@
               tooltip-html
               tooltip-theme="tooltipster-theme3"
               tooltip-title="<center><u>History</u></center><br/>Access all your transaction records."></span>
-        <span waves-tab
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="tokens"
@@ -399,7 +399,7 @@
               tooltip-html
               tooltip-theme="tooltipster-theme3"
               tooltip-title="<center><u>Tokens Creation tab</u></center><br/>Area in which assets can be created."></span>
-        <span waves-tab
+        <span earths-tab
               on-select="nav.changeTab(pageId)"
               current-page-id="nav.currentTab"
               page-id="community"
@@ -407,7 +407,7 @@
               tooltipster
               tooltip-html
               tooltip-theme="tooltipster-theme3"
-              tooltip-title="<center><u>Community tab</u></center><br/>Resources to learn more about Waves project such as <br/>forums, blogs, websites, etc."></span>
+              tooltip-title="<center><u>Community tab</u></center><br/>Resources to learn more about Earths project such as <br/>forums, blogs, websites, etc."></span>
       </div>
     </section>
 
@@ -418,13 +418,13 @@
         <div id="mBB-wallet" class="mBB-content" ng-switch-when="wallet" ng-controller="walletListController as walletList">
 
           <div class="noDisp" ng-controller="walletSendController as send">
-            <div id="wB-butSend-WAV" waves-dialog ok-button-caption="SUBMIT" cancel-button-visible="false" on-dialog-ok="send.submitTransfer(send.form)">
-              <form id="send-waves-form" name="send.form" class="paymentForm" novalidate ng-validate="send.validationOptions">
+            <div id="wB-butSend-WAV" earths-dialog ok-button-caption="SUBMIT" cancel-button-visible="false" on-dialog-ok="send.submitTransfer(send.form)">
+              <form id="send-earths-form" name="send.form" class="paymentForm" novalidate ng-validate="send.validationOptions">
                 <h2 class="sectionHeader">SEND PAYMENT: {{send.currency}}</h2>
                 <table>
                   <div class="balanceAmt">
-                    <div ng-if="!send.feeAndTransferAssetsAreTheSame"><p>Asset balance: </p><span class="balancewaves">{{send.assetBalance | moneyLong:true}}</span><br/></div>
-                    <p>Waves balance: </p><span class="balancewaves">{{send.feeAssetBalance | moneyLong:true}}</span>
+                    <div ng-if="!send.feeAndTransferAssetsAreTheSame"><p>Asset balance: </p><span class="balanceearths">{{send.assetBalance | moneyLong:true}}</span><br/></div>
+                    <p>Earths balance: </p><span class="balanceearths">{{send.feeAssetBalance | moneyLong:true}}</span>
                   </div>
                   <thead>
                   <tr>
@@ -474,7 +474,7 @@
                 </table>
               </form>
             </div>
-            <div id="send-payment-confirmation" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!send.broadcast.pending" on-dialog-ok="send.broadcastTransaction()">
+            <div id="send-payment-confirmation" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!send.broadcast.pending" on-dialog-ok="send.broadcastTransaction()">
               <div class="dialog-confirmation">
                 <p class="dialog-text">You are sending <span class="confirmation-value">{{send.confirm.amount | moneyLong:true}}</span> with
                   <span class="confirmation-value">{{send.confirm.fee | moneyLong:true}}</span> fee to the address<br/>
@@ -486,14 +486,14 @@
           </div>
 
           <div class="noDisp" ng-controller="walletWithdrawController as withdraw" data-type="crypto">
-            <div id="withdraw-crypto-dialog" waves-dialog ok-button-caption="WITHDRAW" on-dialog-ok="withdraw.confirmWithdraw(withdraw.assetForm)">
+            <div id="withdraw-crypto-dialog" earths-dialog ok-button-caption="WITHDRAW" on-dialog-ok="withdraw.confirmWithdraw(withdraw.assetForm)">
               <h2 class="sectionHeader">WITHDRAW: {{withdraw.sourceCurrency}}</h2>
               <p class="dialog-text">The minimum withdrawal amount is <span class="fontBold">{{withdraw.minimumPayment | moneyLong:true}}</span></p>
               <p class="dialog-text" ng-if="withdraw.isEthereum">Do not withdraw ETH to smart contract addresses!<br/>Your transaction may fail if their execution require additional fees.</p>
               <form id="withdraw-asset-form" name="withdraw.assetForm" novalidate ng-validate="withdraw.validationOptions">
                 <table class="form-table">
                   <div class="balanceAmt">
-                    <div><p>Asset balance: </p><span class="balancewaves">{{withdraw.assetBalance | moneyLong:true}}</span><br/></div>
+                    <div><p>Asset balance: </p><span class="balanceearths">{{withdraw.assetBalance | moneyLong:true}}</span><br/></div>
                   </div>
                   <tbody>
                   <tr>
@@ -513,7 +513,7 @@
                     <td><input class="wInput form-control" name="withdrawTotal" type="text" placeholder="Total amount" ng-model="withdraw.total" ng-change="withdraw.refreshAmount()" decimal-input-restrictor/></td>
                   </tr>
                   <tr>
-                    <td class="padded">Waves fee</td>
+                    <td class="padded">Earths fee</td>
                     <td class="padded">
                       <md-autocomplete md-input-name="withdrawFee" md-selected-item="withdraw.autocomplete.selectedFee" md-search-text="withdraw.autocomplete.searchText"
                                        md-items="item in withdraw.autocomplete.querySearch(withdraw.autocomplete.searchText)"
@@ -529,10 +529,10 @@
                 </table>
               </form>
             </div>
-            <div id="withdraw-confirmation" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!withdraw.broadcast.pending" on-dialog-ok="withdraw.broadcastTransaction()">
+            <div id="withdraw-confirmation" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!withdraw.broadcast.pending" on-dialog-ok="withdraw.broadcastTransaction()">
               <div class="dialog-confirmation">
                 <p class="dialog-text">You are sending <span class="confirmation-value">{{withdraw.confirm.amount | moneyLong:true}}</span> with
-                  <span class="confirmation-value">{{withdraw.confirm.fee | moneyLong:true}}</span> fee to the Waves gateway address <br/>
+                  <span class="confirmation-value">{{withdraw.confirm.fee | moneyLong:true}}</span> fee to the Earths gateway address <br/>
                   <span class="confirmation-value">{{withdraw.confirm.gatewayAddress}}</span>.
                 </p>
                 <p class="dialog-text">The gateway will transfer these funds to your {{withdraw.sourceCurrency}} address: <span class="confirmation-value">{{withdraw.confirm.recipient}}</span>.</p>
@@ -542,14 +542,14 @@
           </div>
 
           <div class="noDisp" ng-controller="walletWithdrawController as withdraw" data-type="fiat">
-            <div id="withdraw-fiat-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="withdraw-fiat-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">WITHDRAW: {{withdraw.sourceCurrency}}</h2>
               <p class="dialog-text textCenter">
                 If you've been verified and deposited {{withdraw.sourceCurrency}}<br/>
                 you can withdraw {{withdraw.sourceCurrency}} back to your bank account<br/>
                 <br/>
                 To do so please make a SEND transaction to the<br/>
-                Waves address <span class="email"
+                Earths address <span class="email"
                                     title="Copy this address to the clipboard"
                                     tooltipster
                                     tooltip-theme="tooltipster-theme1"
@@ -561,7 +561,7 @@
                 <br/>
                 The minimum amount is 500 {{withdraw.sourceCurrency}}<br/>
                 <br/>
-                <a href="https://coinomat.com/faq.php" target="_blank">More information about withdrawals</a>
+                <a href="https://coinomat.earths.ga/faq.php" target="_blank">More information about withdrawals</a>
               </p>
               <br/>
               <p class="dialog-text textCenter">
@@ -579,7 +579,7 @@
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="BTC">
-            <div id="deposit-btc-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-btc-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: BTC</h2>
               <p class="dialog-text textCenter">
                 <img src="img/visa_mastercard_116x35.gif" width="116" height="35"><span class="divider-2"></span>
@@ -587,9 +587,9 @@
                   Buy BTC from your credit card
                 </button>
               </p>
-              <p class="dialog-text">To deposit BTC to your Waves account, please send BTC to the address below.<br/>
+              <p class="dialog-text">To deposit BTC to your Earths account, please send BTC to the address below.<br/>
                 The minimum amount of deposit is <span class="fontBold">{{::deposit.btc.minimumAmount}} BTC</span>.</p>
-              <table class="wavesTable bitcoin-requisites">
+              <table class="earthsTable bitcoin-requisites">
                 <tbody>
                 <tr>
                   <td><b>{{deposit.btc.bitcoinAddress}}</b></td>
@@ -597,7 +597,7 @@
                 </tbody>
               </table>
               <p class="dialog-text">Enter this address into your Bitcoin client or wallet. Once the transaction is confirmed, <br/>
-                the gateway will process the transfer of BTC to a token in your Waves account.</p>
+                the gateway will process the transfer of BTC to a token in your Earths account.</p>
               <p class="dialog-text">Please note that the gateway doesn't apply any fees for this operation.</p>
               <p class="dialog-text">You can scan this QR-code in order to copy the address.<br/>
                 Amount is optional but it will be added to the QR-code if present.</p>
@@ -606,14 +606,14 @@
                 <br/>
                 <br/>
                 <a ng-href="{{deposit.btc.bitcoinUri}}">
-                  <waves-qr-code class="center" size="180" value="deposit.btc.bitcoinUri"></waves-qr-code>
+                  <earths-qr-code class="center" size="180" value="deposit.btc.bitcoinUri"></earths-qr-code>
                 </a>
               </div>
             </div>
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="ETH">
-            <div id="deposit-eth-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-eth-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: ETH</h2>
               <div class="plate-warning">
                 <p><b>Do not deposit ETH from smart contracts!</b></p>
@@ -621,10 +621,10 @@
                    We do not accept such transactions and can’t refund them.<br/>
                    You will lose that money.</p>
               </div>
-              <p class="dialog-text">To deposit ETH to your Waves account, please send ETH to the address below.<br/>
+              <p class="dialog-text">To deposit ETH to your Earths account, please send ETH to the address below.<br/>
                 The minimum amount of deposit is <span class="fontBold">{{deposit.eth.minimumAmount}} ETH</span>.</p>
               <p class="dialog-text">Please do not deposit ERC20 tokens! Only Ethereum is allowed.</p>
-              <table class="wavesTable bitcoin-requisites">
+              <table class="earthsTable bitcoin-requisites">
                 <tbody>
                 <tr>
                   <td><b>{{deposit.eth.ethereumAddress}}</b></td>
@@ -632,16 +632,16 @@
                 </tbody>
               </table>
               <p class="dialog-text">Enter this address into your Ethereum client or wallet. Once the transaction is confirmed, <br/>
-                the gateway will process the transfer of ETH to a token in your Waves account.</p>
+                the gateway will process the transfer of ETH to a token in your Earths account.</p>
               <p class="dialog-text">Please note that the gateway doesn't apply any fees for this operation.</p>
               <div class="textCenter">
-                <waves-qr-code class="center" size="180" value="deposit.eth.ethereumAddress"></waves-qr-code>
+                <earths-qr-code class="center" size="180" value="deposit.eth.ethereumAddress"></earths-qr-code>
               </div>
             </div>
           </div>
 
           <div class="noDisp">
-            <div id="digilira-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="digilira-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">TURKISH LIRA</h2>
               <p class="dialog-text">Please visit <a href="https://www.digilira.com/" target="_blank">Digilira</a> gateway.</p>
               <p class="dialog-text">You can only use Turkish Lira gateway if you have Turkish citizenship.</p>
@@ -649,11 +649,11 @@
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="LTC">
-            <div id="deposit-ltc-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-ltc-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: LTC</h2>
-              <p class="dialog-text">To deposit LTC to your Waves account, please send LTC to the address below.<br/>
+              <p class="dialog-text">To deposit LTC to your Earths account, please send LTC to the address below.<br/>
                 The minimum amount of deposit is <span class="fontBold">{{deposit.ltc.minimumAmount}} LTC</span>.</p>
-              <table class="wavesTable bitcoin-requisites">
+              <table class="earthsTable bitcoin-requisites">
                 <tbody>
                 <tr>
                   <td><b>{{deposit.ltc.litecoinAddress}}</b></td>
@@ -661,20 +661,20 @@
                 </tbody>
               </table>
               <p class="dialog-text">Enter this address into your Litecoin client or wallet. Once the transaction is confirmed, <br/>
-                the gateway will process the transfer of LTC to a token in your Waves account.</p>
+                the gateway will process the transfer of LTC to a token in your Earths account.</p>
               <p class="dialog-text">Please note that the gateway doesn't apply any fees for this operation.</p>
               <div class="textCenter">
-                <waves-qr-code class="center" size="180" value="deposit.ltc.litecoinAddress"></waves-qr-code>
+                <earths-qr-code class="center" size="180" value="deposit.ltc.litecoinAddress"></earths-qr-code>
               </div>
             </div>
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="ZEC">
-            <div id="deposit-zec-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-zec-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: ZEC</h2>
-              <p class="dialog-text">To deposit Zcash to your Waves account, please send Zcash to the address below.<br/>
+              <p class="dialog-text">To deposit Zcash to your Earths account, please send Zcash to the address below.<br/>
                 The minimum amount of deposit is <span class="fontBold">{{deposit.zec.minimumAmount}} ZEC</span>.</p>
-              <table class="wavesTable bitcoin-requisites">
+              <table class="earthsTable bitcoin-requisites">
                 <tbody>
                 <tr>
                   <td><b>{{deposit.zec.zcashAddress}}</b></td>
@@ -682,20 +682,20 @@
                 </tbody>
               </table>
               <p class="dialog-text">Enter this address into your Zcash client or wallet. Once the transaction is confirmed, <br/>
-                the gateway will process the transfer of Zcash to a token in your Waves account.</p>
+                the gateway will process the transfer of Zcash to a token in your Earths account.</p>
               <p class="dialog-text">Please note that the gateway doesn't apply any fees for this operation.</p>
               <div class="textCenter">
-                <waves-qr-code class="center" size="180" value="deposit.zec.zcashAddress"></waves-qr-code>
+                <earths-qr-code class="center" size="180" value="deposit.zec.zcashAddress"></earths-qr-code>
               </div>
             </div>
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="BCH">
-            <div id="deposit-bch-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-bch-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: BCH</h2>
-              <p class="dialog-text">To deposit BCH to your Waves account, please send BCH to the address below.<br/>
+              <p class="dialog-text">To deposit BCH to your Earths account, please send BCH to the address below.<br/>
                 The minimum amount of deposit is <span class="fontBold">{{deposit.zec.minimumAmount}} BCH</span>.</p>
-              <table class="wavesTable bitcoin-requisites">
+              <table class="earthsTable bitcoin-requisites">
                 <tbody>
                 <tr>
                   <td><b>{{deposit.bch.cashAddress}}</b></td>
@@ -703,16 +703,16 @@
                 </tbody>
               </table>
               <p class="dialog-text">Enter this address into your BCH client or wallet. Once the transaction is confirmed, <br/>
-                the gateway will process the transfer of BCH to a token in your Waves account.</p>
+                the gateway will process the transfer of BCH to a token in your Earths account.</p>
               <p class="dialog-text">Please note that the gateway doesn't apply any fees for this operation.</p>
               <div class="textCenter">
-                <waves-qr-code class="center" size="180" value="deposit.bch.cashAddress"></waves-qr-code>
+                <earths-qr-code class="center" size="180" value="deposit.bch.cashAddress"></earths-qr-code>
               </div>
             </div>
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="EUR">
-            <div id="deposit-eur-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-eur-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: EUR</h2>
               <p class="dialog-text textCenter">VERIFICATION</p>
               <p class="dialog-text textCenter">
@@ -721,10 +721,10 @@
                 by our partner <a href="https://www.idnow.eu/" target="_blank">IDNow.eu</a>
               </p>
               <p class="dialog-text textCenter">
-                <a href="https://wavesplatform.userecho.com/topics/1303-buying-eurotoken-with-sepa-transfer/" target="_blank">Read more about SEPA transfers</a>
+                <a href="https://earthspay.userecho.com/topics/1303-buying-eurotoken-with-sepa-transfer/" target="_blank">Read more about SEPA transfers</a>
               </p>
               <p class="dialog-text textCenter">
-                <a href="https://wavesplatform.userecho.com/topics/1304-list-of-accepted-countries-and-documents-for-verification/" target="_blank">List of eligible countries and IDs</a>
+                <a href="https://earthspay.userecho.com/topics/1304-list-of-accepted-countries-and-documents-for-verification/" target="_blank">List of eligible countries and IDs</a>
               </p>
               <p class="dialog-text textCenter">
                 In order to get verified follow the link:<br/>
@@ -743,13 +743,13 @@
                       data-clipboard-text="{{deposit.fiat.email}}"
                       ngclipboard-success="clipboardOk()">{{deposit.fiat.email}}</span>
                 <br/>
-                with your Waves wallet address as the subject
+                with your Earths wallet address as the subject
               </p>
             </div>
           </div>
 
           <div class="noDisp" ng-controller="walletDepositController as deposit" data-currency="USD">
-            <div id="deposit-usd-dialog" waves-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
+            <div id="deposit-usd-dialog" earths-dialog ok-button-caption="CLOSE" cancel-button-visible="false">
               <h2 class="sectionHeader">DEPOSIT: USD</h2>
               <p class="dialog-text textCenter">VERIFICATION</p>
               <p class="dialog-text textCenter">
@@ -758,7 +758,7 @@
                 by our partner <a href="https://www.idnow.eu/" target="_blank">IDNow.eu</a>
               </p>
               <p class="dialog-text textCenter">
-                <a href="https://wavesplatform.userecho.com/topics/1304-list-of-accepted-countries-and-documents-for-verification/" target="_blank">List of eligible countries and IDs</a>
+                <a href="https://earthspay.userecho.com/topics/1304-list-of-accepted-countries-and-documents-for-verification/" target="_blank">List of eligible countries and IDs</a>
               </p>
               <p class="dialog-text textCenter">
                 In order to get verified follow the link:<br/>
@@ -777,13 +777,13 @@
                       data-clipboard-text="{{deposit.fiat.email}}"
                       ngclipboard-success="clipboardOk()">{{deposit.fiat.email}}</span>
                 <br/>
-                with your Waves wallet address as the subject
+                with your Earths wallet address as the subject
               </p>
             </div>
           </div>
 
           <div class="noDisp" ng-controller="cardDepositController as card">
-            <div id="card-deposit-dialog" waves-dialog ok-button-caption="BUY" on-dialog-ok="card.redirectToMerchant(card.form)">
+            <div id="card-deposit-dialog" earths-dialog ok-button-caption="BUY" on-dialog-ok="card.redirectToMerchant(card.form)">
               <h2 class="sectionHeader">DEPOSIT FROM CARD: <b>{{card.crypto.shortName}}</b></h2>
               <p class="textCenter">Please note: the minimum amount you can pay is <b>{{card.limits.min | number:0}} {{card.payCurrency.displayName}}</b>,<br/>
                 the maximum is <b>{{card.limits.max | number:0}} {{card.payCurrency.displayName}}</b></p>
@@ -823,9 +823,9 @@
                         on-withdraw="walletList.withdraw(w)"
                         on-deposit="walletList.deposit(w)"></wallet-box>
           </div>
-          <waves-transaction-history heading="LATEST TRANSACTIONS"
+          <earths-transaction-history heading="LATEST TRANSACTIONS"
                                      transactions="walletList.transactions"
-                                     limit-to="10"></waves-transaction-history>
+                                     limit-to="10"></earths-transaction-history>
         </div>
         <!-- / WALLET TAB -->
 
@@ -833,7 +833,7 @@
         <div id="mBB-portfolio" class="mBB-content wScroll" ng-switch-when="portfolio">
           <div ng-controller="assetListController as assetList">
             <h2 class="sectionHeader">PORTFOLIO</h2>
-            <table class="wavesTable wScroll">
+            <table class="earthsTable wScroll">
               <thead>
               <tr>
                 <td>ASSET NAME</td>
@@ -866,9 +866,9 @@
               </tbody>
             </table>
             <div class="noDisp" ng-controller="assetDetailsController as details">
-              <div id="asset-details-dialog" waves-dialog cancel-button-visible="false">
+              <div id="asset-details-dialog" earths-dialog cancel-button-visible="false">
                 <h2 class="sectionHeader">ASSET DETAILS</h2>
-                <table class="wavesTable">
+                <table class="earthsTable">
                   <thead>
                   <tr>
                     <td>FIELD</td>
@@ -911,14 +911,14 @@
               </div>
             </div>
             <div class="noDisp" ng-controller="assetTransferController as transfer">
-              <div id="asset-transfer-dialog" waves-dialog ok-button-caption="TRANSFER" on-dialog-ok="transfer.submitTransfer(transfer.assetForm)">
+              <div id="asset-transfer-dialog" earths-dialog ok-button-caption="TRANSFER" on-dialog-ok="transfer.submitTransfer(transfer.assetForm)">
                 <form id="transfer-asset-form" name="transfer.assetForm" novalidate ng-validate="transfer.validationOptions">
                   <h2 class="sectionHeader">ASSET TRANSFER</h2>
                   <div class="balanceAmt">
-                    <p>Asset balance: </p><span class="balancewaves">{{transfer.availableBalance | moneyLong:true}}</span><br/>
-                    <p>Waves balance: </p><span class="balancewaves">{{transfer.feeAssetBalance | moneyLong:true}}</span>
+                    <p>Asset balance: </p><span class="balanceearths">{{transfer.availableBalance | moneyLong:true}}</span><br/>
+                    <p>Earths balance: </p><span class="balanceearths">{{transfer.feeAssetBalance | moneyLong:true}}</span>
                   </div>
-                  <table class="wavesTable">
+                  <table class="earthsTable">
                     <thead>
                     <th>DESCRIPTION</th>
                     <th>INPUT</th>
@@ -965,7 +965,7 @@
                   </table>
                 </form>
               </div>
-              <div id="transfer-asset-confirmation" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!transfer.broadcast.pending" on-dialog-ok="transfer.broadcastTransaction()">
+              <div id="transfer-asset-confirmation" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!transfer.broadcast.pending" on-dialog-ok="transfer.broadcastTransaction()">
                 <div class="dialog-confirmation">
                   <p class="dialog-text">You are sending <span class="confirmation-value">{{transfer.confirm.amount | moneyLong:true}}</span> with
                     <span class="confirmation-value">{{transfer.confirm.fee | moneyLong:true}}</span> fee <br/>
@@ -976,14 +976,14 @@
               </div>
             </div>
             <div class="noDisp" ng-controller="assetReissueController as reissue">
-              <div id="asset-reissue-dialog" waves-dialog ok-button-caption="REISSUE" ok-button-enabled="!reissue.broadcast.pending" on-dialog-ok="reissue.submitReissue(reissue.assetForm)">
+              <div id="asset-reissue-dialog" earths-dialog ok-button-caption="REISSUE" ok-button-enabled="!reissue.broadcast.pending" on-dialog-ok="reissue.submitReissue(reissue.assetForm)">
                 <form id="asset-reissue-form" name="reissue.assetForm" novalidate ng-validate="reissue.validationOptions">
                   <h2 class="sectionHeader">ASSET REISSUE</h2>
                   <div class="balanceAmt">
-                    <p>Total tokens issued: </p><span class="balancewaves">{{reissue.totalTokens.formatAmount()}}</span><br/>
-                    <p>Waves balance: </p><span class="balancewaves">{{reissue.wavesBalance.formatAmount(true)}}</span>
+                    <p>Total tokens issued: </p><span class="balanceearths">{{reissue.totalTokens.formatAmount()}}</span><br/>
+                    <p>Earths balance: </p><span class="balanceearths">{{reissue.earthsBalance.formatAmount(true)}}</span>
                   </div>
-                  <table class="wavesTable">
+                  <table class="earthsTable">
                     <thead>
                     <tr>
                       <th>DESCRIPTION</th>
@@ -1024,7 +1024,7 @@
                   </table>
                 </form>
               </div>
-              <div id="asset-reissue-confirm-dialog" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!reissue.broadcast.pending" on-dialog-ok="reissue.broadcastTransaction()">
+              <div id="asset-reissue-confirm-dialog" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!reissue.broadcast.pending" on-dialog-ok="reissue.broadcastTransaction()">
                 <div class="dialog-confirmation">
                   <p class="dialog-text">You are issuing an additional amount of <span class="confirmation-value">{{reissue.confirm.amount | moneyShort}}</span> tokens <br/>
                     to the asset <span class="confirmation-value">{{reissue.confirm.amount.currency}}</span>
@@ -1035,13 +1035,13 @@
               </div>
             </div>
             <div class="noDisp" ng-controller="massPaymentController as mass">
-              <div id="asset-mass-pay-dialog" waves-dialog ok-button-caption="SEND" show-buttons="false">
+              <div id="asset-mass-pay-dialog" earths-dialog ok-button-caption="SEND" show-buttons="false">
                 <h2 class="sectionHeader">MASS PAYMENT</h2>
                 <ng-switch on="mass.stage">
                   <p ng-if="mass.invalidPayment" class="notice-alert">{{mass.inputErrorMessage}}
                     Please fix the error and load the file again.</p>
                   <form id="massPaymentFilesForm" name="mass.form" novalidate ng-switch-when="loading" ng-validate="mass.validationOptions">
-                    <table class="wavesTable">
+                    <table class="earthsTable">
                       <thead>
                       <tr>
                         <th>DESCRIPTION</th>
@@ -1083,7 +1083,7 @@
                     <p>Please notice that only the first 10 transactions are shown below as a sample. Use the EXPORT functionality to export the full transaction details to clipboard.</p>
                     <p>Total transactions: {{mass.summary.totalTransactions}} | Total amount: {{mass.summary.totalAmount.toTokens()}} | Total fee: {{mass.summary.totalFee.toTokens()}}</p>
 
-                    <table class="wavesTable">
+                    <table class="earthsTable">
                       <thead>
                       <tr>
                         <td>RECIPIENT</td>
@@ -1106,7 +1106,7 @@
                   </div>
                 </ng-switch>
               </div>
-              <div id="asset-mass-pay-confirmation" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!mass.broadcast.pending" on-dialog-ok="mass.broadcastTransaction()">
+              <div id="asset-mass-pay-confirmation" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!mass.broadcast.pending" on-dialog-ok="mass.broadcastTransaction()">
                 <div class="dialog-confirmation">
                   <p class="dialog-text">You are sending <span class="confirmation-value">{{mass.confirm.amount | moneyLong:true}}</span> with
                     <span class="confirmation-value">{{mass.confirm.fee | moneyLong:true}}</span> total fee <br/>
@@ -1121,15 +1121,15 @@
         <!-- / PORTFOLIO TAB -->
 
         <!-- DEX TAB -->
-        <waves-page ng-switch-when="exchange" page-title="DEX">
-          <waves-dex></waves-dex>
-        </waves-page>
+        <earths-page ng-switch-when="exchange" page-title="DEX">
+          <earths-dex></earths-dex>
+        </earths-page>
         <!-- / DEX TAB -->
 
         <!-- LEASING TAB -->
-        <waves-page ng-switch-when="leasing" page-title="Leasing">
-          <waves-leasing></waves-leasing>
-        </waves-page>
+        <earths-page ng-switch-when="leasing" page-title="Leasing">
+          <earths-leasing></earths-leasing>
+        </earths-page>
         <!-- / LEASING TAB -->
 
         <!-- VOTING TAB -->
@@ -1137,7 +1137,7 @@
           <div class="phContent">
             <h1>DECENTRALIZED VOTING</h1>
             <br/>
-            <p>With a fair and automated system, Waves' voting area enables communities and projects to achieve consensus for critical decision-making that might otherwise prove difficult or controversial. A full set of analytic tools will also be available to follow up the voting process in real time.
+            <p>With a fair and automated system, Earths' voting area enables communities and projects to achieve consensus for critical decision-making that might otherwise prove difficult or controversial. A full set of analytic tools will also be available to follow up the voting process in real time.
               <br/><br/>
               The Decentralized Voting feature launch is estimated for the first quarter of 2017.
             </p>
@@ -1149,9 +1149,9 @@
 
         <!-- HISTORY TAB -->
         <div id="mBB-history" class="mBB-content" ng-switch-when="history" ng-controller="historyController as history">
-          <waves-transaction-history heading="LATEST TRANSACTIONS"
+          <earths-transaction-history heading="LATEST TRANSACTIONS"
                                      transactions="history.transactions"
-                                     limit-to="50"></waves-transaction-history>
+                                     limit-to="50"></earths-transaction-history>
         </div>
         <!-- / HISTORY TAB -->
 
@@ -1162,9 +1162,9 @@
             <h2 class="sectionHeader">TOKEN CREATION</h2>
             <form id="create-asset-form" name="createAssetForm" novalidate ng-validate="ctrl.issuanceValidationOptions" ng-submit="ctrl.assetIssueConfirmation(createAssetForm, $event)">
               <div class="balanceAmt">
-                <p>Waves balance: </p><span class="balancewaves">{{ctrl.wavesBalance | moneyLong:true}}</span>
+                <p>Earths balance: </p><span class="balanceearths">{{ctrl.earthsBalance | moneyLong:true}}</span>
               </div>
-              <table class="wavesTable">
+              <table class="earthsTable">
                 <thead>
                 <tr>
                   <td>DESCRIPTION</td>
@@ -1204,7 +1204,7 @@
               </div>
             </form>
 
-            <div id="create-asset-confirmation" waves-dialog ok-button-caption="CONFIRM" ok-button-enabled="!ctrl.broadcast.pending" on-dialog-ok="ctrl.broadcastIssueTransaction()">
+            <div id="create-asset-confirmation" earths-dialog ok-button-caption="CONFIRM" ok-button-enabled="!ctrl.broadcast.pending" on-dialog-ok="ctrl.broadcastIssueTransaction()">
               <div class="dialog-confirmation">
                 <p class="dialog-text">You are creating a <span class="confirmation-value">{{ctrl.confirm.reissuable}}</span> asset named
                   <span class="confirmation-value">{{ctrl.confirm.name}}</span><br/> with
@@ -1231,7 +1231,7 @@
             <br/><br/>
             <img src="img/tab_cont_prev.svg" />
           </div>
-          <div id="addContact-wPop" class="wavesPop">
+          <div id="addContact-wPop" class="earthsPop">
             <img class="wPop-header" src="img/modal-header.svg" />
             <form id="addContactForm" class="wPop-content">
               <h2 class="sectionHeader">ADD CONTACT</h2>
@@ -1258,7 +1258,7 @@
           <p>DISCLAIMER: The Community tab will temporarily hold block information for testing purposes. After alpha phase this data  will be relocated inside the Preferences - Advanced area.</p>
           <h2 class="sectionHeader">LATEST BLOCKS INFORMATION</h2>
           <p class="centerIt">
-          <div id="latestBlocks" class="wavesTable wScroll" >
+          <div id="latestBlocks" class="earthsTable wScroll" >
             <table>
               <thead>
               <tr class="fade">

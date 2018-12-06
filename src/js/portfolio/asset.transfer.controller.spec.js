@@ -14,7 +14,7 @@ describe('Asset.Transfer.Controller', function() {
     var address = '3N9UuGeWuDt9NfWbC5oEACHyRoeEMApXAeq';
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.portfolio'));
 
     // Injection of dependencies
@@ -53,15 +53,15 @@ describe('Asset.Transfer.Controller', function() {
         });
     }));
 
-    function initControllerAssets(assetBalance, wavesBalance) {
+    function initControllerAssets(assetBalance, earthsBalance) {
         if (!assetBalance)
             assetBalance = Money.fromTokens(10, Currency.USD);
 
-        if (!wavesBalance)
-            wavesBalance = Money.fromTokens(20, Currency.WAVES);
+        if (!earthsBalance)
+            earthsBalance = Money.fromTokens(20, Currency.EARTHS);
 
         var assetId;
-        if (assetBalance.currency !== Currency.WAVES) {
+        if (assetBalance.currency !== Currency.EARTHS) {
             assetId = assetBalance.currency.id;
             applicationContext.cache.assets[assetId] = {
                 balance: assetBalance,
@@ -71,7 +71,7 @@ describe('Asset.Transfer.Controller', function() {
 
         $rootScope.$broadcast(events.ASSET_TRANSFER, {
             assetId: assetId,
-            wavesBalance: wavesBalance
+            earthsBalance: earthsBalance
         });
     }
 
@@ -109,7 +109,7 @@ describe('Asset.Transfer.Controller', function() {
         expect(controller.confirm.amount.toTokens()).toEqual(7);
         expect(controller.confirm.amount.currency).toEqual(Currency.CNY);
         expect(controller.confirm.fee.toTokens()).toEqual(0.002);
-        expect(controller.confirm.fee.currency).toEqual(Currency.WAVES);
+        expect(controller.confirm.fee.currency).toEqual(Currency.EARTHS);
         expect(controller.confirm.recipient).toEqual(address);
 
         expect(controller.broadcast.setTransaction).toHaveBeenCalled();
@@ -129,7 +129,7 @@ describe('Asset.Transfer.Controller', function() {
         expect(controller.submitTransfer(formMock)).toBe(false);
     });
 
-    it('should not create transaction if there is not enough waves for fee', function () {
+    it('should not create transaction if there is not enough earths for fee', function () {
         initControllerAssets();
 
         spyOn(controller.autocomplete, 'getFeeAmount').and.returnValue('20.002');

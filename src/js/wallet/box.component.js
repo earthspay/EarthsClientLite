@@ -5,9 +5,9 @@
         var ctrl = this;
 
         var mapping = {};
-        mapping[Currency.WAVES.displayName] = {
+        mapping[Currency.EARTHS.displayName] = {
             image: 'wB-bg-WAV.svg',
-            displayName: Currency.WAVES.displayName
+            displayName: Currency.EARTHS.displayName
         };
         mapping[Currency.BTC.displayName] = {
             image: 'wB-bg-BTC.svg',

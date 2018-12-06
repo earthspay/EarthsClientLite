@@ -67,7 +67,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexChart', {
+        .component('earthsDexChart', {
             controller: ChartController,
             bindings: {
                 pair: '<'

@@ -14,7 +14,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexFavorites', {
+        .component('earthsDexFavorites', {
             controller: FavoritesController,
             bindings: {
                 pairs: '<',

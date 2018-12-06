@@ -1,10 +1,10 @@
 {
-  "name": "waves-lite-client",
+  "name": "earths-lite-client",
   "version": "0.5.22",
-  "description": "A lite client for the Waves platform",
+  "description": "A lite client for the Earths platform",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wavesplatform/WavesGUI.git"
+    "url": "https://github.com/earthspay/EarthsGUI.git"
   },
   "license": "Apache-2.0",
   "engines": {
@@ -40,7 +40,7 @@
     "karma-jasmine": "1.0.2",
     "karma-phantomjs-launcher": "1.0.1",
     "pixrem": "^3.0.2",
-    "waves-grunt-github-releaser": "^0.2.0"
+    "earths-grunt-github-releaser": "^0.2.0"
   },
   "scripts": {
     "postinstall": "bower install"

@@ -12,7 +12,7 @@
         }
     }
 
-    function WavesCardDepositController ($scope, $window, $q, events, dialogService,
+    function EarthsCardDepositController ($scope, $window, $q, events, dialogService,
                                          fiatService, applicationContext, notificationService) {
         var deferred;
         var ctrl = this;
@@ -127,10 +127,10 @@
         }
     }
 
-    WavesCardDepositController.$inject = ['$scope', '$window', '$q', 'wallet.events', 'dialogService',
+    EarthsCardDepositController.$inject = ['$scope', '$window', '$q', 'wallet.events', 'dialogService',
                                           'coinomatFiatService', 'applicationContext', 'notificationService'];
 
     angular
         .module('app.wallet')
-        .controller('cardDepositController', WavesCardDepositController);
+        .controller('cardDepositController', EarthsCardDepositController);
 })();

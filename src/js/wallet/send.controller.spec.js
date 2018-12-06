@@ -11,7 +11,7 @@ describe('Wallet.Send.Controller', function() {
     var address = '3N9UuGeWuDt9NfWbC5oEACHyRoeEMApXAeq';
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.wallet'));
 
     // Injection of dependencies
@@ -50,18 +50,18 @@ describe('Wallet.Send.Controller', function() {
         });
     }));
 
-    function initControllerAssets(assetBalance, wavesBalance) {
+    function initControllerAssets(assetBalance, earthsBalance) {
         if (!assetBalance) {
             assetBalance = Money.fromTokens(10, Currency.USD);
         }
 
-        if (!wavesBalance) {
-            wavesBalance = Money.fromTokens(20, Currency.WAVES);
+        if (!earthsBalance) {
+            earthsBalance = Money.fromTokens(20, Currency.EARTHS);
         }
 
         $rootScope.$broadcast(events.WALLET_SEND, {
             assetBalance: assetBalance,
-            wavesBalance: wavesBalance
+            earthsBalance: earthsBalance
         });
     }
 
@@ -73,7 +73,7 @@ describe('Wallet.Send.Controller', function() {
         expect(controller.broadcast).toBeDefined();
     });
 
-    it('should correctly handle the WAVES_SEND event', function () {
+    it('should correctly handle the EARTHS_SEND event', function () {
         initControllerAssets();
 
         expect(controller.feeAndTransferAssetsAreTheSame).toBe(false);
@@ -83,8 +83,8 @@ describe('Wallet.Send.Controller', function() {
         expect(dialogService.open).toHaveBeenCalledWith('#wB-butSend-WAV');
     });
 
-    it('should understand that waves are being sent', function () {
-        initControllerAssets(Money.fromTokens(10, Currency.WAVES), Money.fromTokens(10, Currency.WAVES));
+    it('should understand that earths are being sent', function () {
+        initControllerAssets(Money.fromTokens(10, Currency.EARTHS), Money.fromTokens(10, Currency.EARTHS));
 
         expect(controller.feeAndTransferAssetsAreTheSame).toBe(true);
 
@@ -106,7 +106,7 @@ describe('Wallet.Send.Controller', function() {
         expect(controller.confirm.amount.toTokens()).toEqual(7);
         expect(controller.confirm.amount.currency).toEqual(Currency.CNY);
         expect(controller.confirm.fee.toTokens()).toEqual(0.002);
-        expect(controller.confirm.fee.currency).toEqual(Currency.WAVES);
+        expect(controller.confirm.fee.currency).toEqual(Currency.EARTHS);
         expect(controller.confirm.recipient).toEqual(address);
 
         expect(controller.broadcast.setTransaction).toHaveBeenCalled();
@@ -126,7 +126,7 @@ describe('Wallet.Send.Controller', function() {
         expect(controller.submitTransfer(formMock)).toBe(false);
     });
 
-    it('should not create transaction if there is not enough waves for fee', function () {
+    it('should not create transaction if there is not enough earths for fee', function () {
         initControllerAssets();
 
         spyOn(controller.autocomplete, 'getFeeAmount').and.returnValue('20.002');
@@ -140,8 +140,8 @@ describe('Wallet.Send.Controller', function() {
         expect(controller.broadcast.setTransaction).not.toHaveBeenCalled();
     });
 
-    it('should not create transaction if there is not enough waves for transfer and fee', function () {
-        var amount = Money.fromTokens(10.001, Currency.WAVES);
+    it('should not create transaction if there is not enough earths for transfer and fee', function () {
+        var amount = Money.fromTokens(10.001, Currency.EARTHS);
         initControllerAssets(amount, amount);
 
         spyOn(controller.autocomplete, 'getFeeAmount').and.returnValue('0.002');
@@ -155,8 +155,8 @@ describe('Wallet.Send.Controller', function() {
         expect(controller.broadcast.setTransaction).not.toHaveBeenCalled();
     });
 
-    it('should create transaction if there is just enough waves for payment', function () {
-        var amount = Money.fromTokens(10, Currency.WAVES);
+    it('should create transaction if there is just enough earths for payment', function () {
+        var amount = Money.fromTokens(10, Currency.EARTHS);
         initControllerAssets(amount, amount);
 
         spyOn(controller.autocomplete, 'getFeeAmount').and.returnValue('0.002');
@@ -169,6 +169,6 @@ describe('Wallet.Send.Controller', function() {
         expect(notificationService.error).not.toHaveBeenCalled();
         expect(controller.broadcast.setTransaction).toHaveBeenCalled();
         expect(controller.confirm.fee.toTokens()).toEqual(0.002);
-        expect(controller.confirm.fee.currency).toEqual(Currency.WAVES);
+        expect(controller.confirm.fee.currency).toEqual(Currency.EARTHS);
     });
 });

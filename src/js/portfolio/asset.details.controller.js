@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function WavesAssetDetailsController($scope, $timeout, events, applicationContext, dialogService) {
+    function EarthsAssetDetailsController($scope, $timeout, events, applicationContext, dialogService) {
         var details = this;
 
         function transformAddress(address) {
@@ -33,10 +33,10 @@
         });
     }
 
-    WavesAssetDetailsController.$inject = ['$scope', '$timeout', 'portfolio.events', 'applicationContext',
+    EarthsAssetDetailsController.$inject = ['$scope', '$timeout', 'portfolio.events', 'applicationContext',
         'dialogService'];
 
     angular
         .module('app.portfolio')
-        .controller('assetDetailsController', WavesAssetDetailsController);
+        .controller('assetDetailsController', EarthsAssetDetailsController);
 })();

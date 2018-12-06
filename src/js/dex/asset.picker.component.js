@@ -79,7 +79,7 @@
 
     angular
         .module('app.dex')
-        .component('wavesDexAssetPicker', {
+        .component('earthsDexAssetPicker', {
             controller: AssetPickerController,
             bindings: {
                 name: '@',

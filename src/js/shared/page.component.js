@@ -9,7 +9,7 @@
 
     angular
         .module('app.shared')
-        .component('wavesPage', {
+        .component('earthsPage', {
             controller: PageController,
             bindings: {
                 pageTitle: '@'

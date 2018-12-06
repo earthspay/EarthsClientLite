@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function WavesTabController($scope, dialogService) {
+    function EarthsTabController($scope, dialogService) {
         $scope.isSelected = function () {
             return $scope.pageId === $scope.currentPageId;
         };
@@ -14,23 +14,23 @@
         };
     }
 
-    function WavesTabLink(scope, element) {
+    function EarthsTabLink(scope, element) {
         element.addClass('tabs-radio');
     }
 
     angular
         .module('app.navigation')
-        .directive('wavesTab', function WavesTabDirective() {
+        .directive('earthsTab', function EarthsTabDirective() {
             return {
                 restrict: 'A',
-                controller: ['$scope', 'dialogService', WavesTabController],
+                controller: ['$scope', 'dialogService', EarthsTabController],
                 scope: {
                     pageId: '@',
                     caption: '<',
                     onSelect: '&',
                     currentPageId: '<'
                 },
-                link: WavesTabLink,
+                link: EarthsTabLink,
                 templateUrl: 'navigation/tab.directive'
             };
         });

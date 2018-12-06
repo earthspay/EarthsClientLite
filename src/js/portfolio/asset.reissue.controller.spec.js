@@ -13,7 +13,7 @@ describe('Asset.Reissue.Controller', function() {
         };
 
     // Initialization of the module before each test case
-    beforeEach(module('waves.core'));
+    beforeEach(module('earths.core'));
     beforeEach(module('app.portfolio'));
 
     // Injection of dependencies
@@ -51,15 +51,15 @@ describe('Asset.Reissue.Controller', function() {
         });
     }));
 
-    function initControllerAssets(assetBalance, wavesBalance) {
+    function initControllerAssets(assetBalance, earthsBalance) {
         if (!assetBalance)
             assetBalance = Money.fromTokens(10, Currency.USD);
 
-        if (!wavesBalance)
-            wavesBalance = Money.fromTokens(20, Currency.WAVES);
+        if (!earthsBalance)
+            earthsBalance = Money.fromTokens(20, Currency.EARTHS);
 
         var assetId;
-        if (assetBalance.currency !== Currency.WAVES) {
+        if (assetBalance.currency !== Currency.EARTHS) {
             assetId = assetBalance.currency.id;
             applicationContext.cache.assets[assetId] = {
                 balance: assetBalance,
@@ -70,7 +70,7 @@ describe('Asset.Reissue.Controller', function() {
 
         $rootScope.$broadcast(events.ASSET_REISSUE, {
             assetId: assetId,
-            wavesBalance: wavesBalance
+            earthsBalance: earthsBalance
         });
     }
 
@@ -102,7 +102,7 @@ describe('Asset.Reissue.Controller', function() {
         expect(controller.confirm.amount.toTokens()).toEqual(7);
         expect(controller.confirm.amount.currency).toEqual(Currency.CNY);
         expect(controller.confirm.fee.toTokens()).toEqual(1);
-        expect(controller.confirm.fee.currency).toEqual(Currency.WAVES);
+        expect(controller.confirm.fee.currency).toEqual(Currency.EARTHS);
 
         expect(controller.broadcast.setTransaction).toHaveBeenCalled();
         expect(dialogService.open).toHaveBeenCalledTimes(2);
@@ -120,8 +120,8 @@ describe('Asset.Reissue.Controller', function() {
         expect(controller.submitReissue(formMock)).toBe(false);
     });
 
-    it('should not create transaction if there is not enough waves for fee', function () {
-        initControllerAssets(undefined, Money.fromTokens(0.9, Currency.WAVES));
+    it('should not create transaction if there is not enough earths for fee', function () {
+        initControllerAssets(undefined, Money.fromTokens(0.9, Currency.EARTHS));
 
         spyOn(controller.broadcast, 'setTransaction');
         spyOn(notificationService, 'error');
@@ -134,9 +134,9 @@ describe('Asset.Reissue.Controller', function() {
     });
 
     it('should not create transaction if there is not enough asset for transfer', function () {
-        var waves = Money.fromTokens(10, Currency.WAVES);
+        var earths = Money.fromTokens(10, Currency.EARTHS);
         expect(function () {
-            initControllerAssets(waves, waves);
+            initControllerAssets(earths, earths);
         }).toThrowError(Error);
     });
 });

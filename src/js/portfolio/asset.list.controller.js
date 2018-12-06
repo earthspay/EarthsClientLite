@@ -1,13 +1,13 @@
 (function () {
     'use strict';
 
-    function WavesAssetListController($scope, $timeout, $interval, events,
+    function EarthsAssetListController($scope, $timeout, $interval, events,
                                       applicationContext, apiService, formattingService) {
         var ctrl = this;
         var refreshPromise;
         var refreshDelay = 10 * 1000;
 
-        ctrl.wavesBalance = new Money(0, Currency.WAVES);
+        ctrl.earthsBalance = new Money(0, Currency.EARTHS);
         ctrl.assets = [];
         ctrl.noData = true;
         ctrl.assetTransfer = assetTransfer;
@@ -36,7 +36,7 @@
         function assetTransfer(assetId) {
             $scope.$broadcast(events.ASSET_TRANSFER, {
                 assetId: assetId,
-                wavesBalance: ctrl.wavesBalance
+                earthsBalance: ctrl.earthsBalance
             });
         }
 
@@ -47,14 +47,14 @@
         function assetReissue(assetId) {
             $scope.$broadcast(events.ASSET_REISSUE, {
                 assetId: assetId,
-                wavesBalance: ctrl.wavesBalance
+                earthsBalance: ctrl.earthsBalance
             });
         }
 
         function assetMassPay(assetId) {
             $scope.$broadcast(events.ASSET_MASSPAY, {
                 assetId: assetId,
-                wavesBalance: ctrl.wavesBalance
+                earthsBalance: ctrl.earthsBalance
             });
         }
 
@@ -71,7 +71,7 @@
         function refreshBalance() {
             apiService.address.balance(applicationContext.account.address)
                 .then(function (response) {
-                    ctrl.wavesBalance = Money.fromCoins(response.balance, Currency.WAVES);
+                    ctrl.earthsBalance = Money.fromCoins(response.balance, Currency.EARTHS);
                 });
         }
 
@@ -130,10 +130,10 @@
         }
     }
 
-    WavesAssetListController.$inject = ['$scope', '$timeout', '$interval', 'portfolio.events',
+    EarthsAssetListController.$inject = ['$scope', '$timeout', '$interval', 'portfolio.events',
         'applicationContext', 'apiService', 'formattingService'];
 
     angular
         .module('app.portfolio')
-        .controller('assetListController', WavesAssetListController);
+        .controller('assetListController', EarthsAssetListController);
 })();

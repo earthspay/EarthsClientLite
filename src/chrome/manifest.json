@@ -1,7 +1,7 @@
 {
-  "name": "WavesLiteApp",
-  "short_name": "WavesLite",
-  "description": "Waves Client - Use the Waves Client as Chrome App to control your Blockchain Account finances.",
+  "name": "EarthsLiteApp",
+  "short_name": "EarthsLite",
+  "description": "Earths Client - Use the Earths Client as Chrome App to control your Blockchain Account finances.",
   "version": "<%= pkg.version %>",
   "manifest_version": 2,
   "icons": {

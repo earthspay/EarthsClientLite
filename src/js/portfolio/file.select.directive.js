@@ -3,7 +3,7 @@
 
     angular
         .module('app.portfolio')
-        .directive('fileSelect', [function WavesFileSelectDirective() {
+        .directive('fileSelect', [function EarthsFileSelectDirective() {
             return {
                 restrict: 'A',
                 scope: {

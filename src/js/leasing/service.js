@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var DEFAULT_CURRENCY = Currency.WAVES;
+    var DEFAULT_CURRENCY = Currency.EARTHS;
 
-    function WavesLeasingService (apiService) {
+    function EarthsLeasingService (apiService) {
         function parseBalance(response) {
             return Money.fromCoins(response.balance, DEFAULT_CURRENCY);
         }
@@ -29,9 +29,9 @@
         };
     }
 
-    WavesLeasingService.$inject = ['apiService'];
+    EarthsLeasingService.$inject = ['apiService'];
 
     angular
         .module('app.leasing')
-        .service('leasingService', WavesLeasingService);
+        .service('leasingService', EarthsLeasingService);
 })();

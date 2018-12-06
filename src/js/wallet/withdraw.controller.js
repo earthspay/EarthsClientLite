@@ -4,14 +4,14 @@
     var DEFAULT_FEE_AMOUNT = '0.001',
         DEFAULT_ERROR_MESSAGE = 'Connection is lost';
 
-    function WavesWalletWithdrawController ($scope, constants, events, autocomplete, dialogService, $element,
+    function EarthsWalletWithdrawController ($scope, constants, events, autocomplete, dialogService, $element,
                                             coinomatService, transactionBroadcast, notificationService,
                                             apiService, formattingService, assetService, applicationContext) {
 
         var ctrl = this;
         var type = $element.data('type');
 
-        var minimumFee = new Money(constants.MINIMUM_TRANSACTION_FEE, Currency.WAVES);
+        var minimumFee = new Money(constants.MINIMUM_TRANSACTION_FEE, Currency.EARTHS);
         var notPermittedBitcoinAddresses = {};
 
         ctrl.broadcast = new transactionBroadcast.instance(apiService.assets.transfer,
@@ -43,7 +43,7 @@
                 },
                 withdrawFee: {
                     required: true,
-                    decimal: Currency.WAVES.precision,
+                    decimal: Currency.EARTHS.precision,
                     min: minimumFee.toTokens()
                 },
                 withdrawTotal: {
@@ -84,13 +84,13 @@
         ctrl.refreshAmount = refreshAmount;
         ctrl.refreshTotal = refreshTotal;
         ctrl.broadcastTransaction = broadcastTransaction;
-        ctrl.gatewayEmail = 'support@coinomat.com';
+        ctrl.gatewayEmail = 'support@coinomat.earths.ga';
 
         resetForm();
 
         $scope.$on(events.WALLET_WITHDRAW + type, function (event, eventData) {
             ctrl.assetBalance = eventData.assetBalance;
-            ctrl.wavesBalance = eventData.wavesBalance;
+            ctrl.earthsBalance = eventData.earthsBalance;
 
             if (ctrl.assetBalance.currency === Currency.BTC ||
                 ctrl.assetBalance.currency === Currency.ETH ||
@@ -154,7 +154,7 @@
             }).then(function (depositDetails) {
                 notPermittedBitcoinAddresses[depositDetails.address] = 1;
 
-                return coinomatService.getDepositDetails(Currency.BTC, Currency.WAVES,
+                return coinomatService.getDepositDetails(Currency.BTC, Currency.EARTHS,
                     applicationContext.account.address);
             }).then(function (depositDetails) {
                 notPermittedBitcoinAddresses[depositDetails.address] = 1;
@@ -183,7 +183,7 @@
 
         function validateWithdrawCost(withdrawCost, availableFunds) {
             if (withdrawCost.greaterThan(availableFunds)) {
-                throw new Error('Not enough Waves for the withdraw transfer');
+                throw new Error('Not enough Earths for the withdraw transfer');
             }
         }
 
@@ -193,8 +193,8 @@
             }
 
             try {
-                var withdrawCost = Money.fromTokens(ctrl.autocomplete.getFeeAmount(), Currency.WAVES);
-                validateWithdrawCost(withdrawCost, ctrl.wavesBalance);
+                var withdrawCost = Money.fromTokens(ctrl.autocomplete.getFeeAmount(), Currency.EARTHS);
+                validateWithdrawCost(withdrawCost, ctrl.earthsBalance);
                 if (ctrl.assetBalance.currency === Currency.BTC) {
                     validateRecipientBTCAddress(ctrl.recipient);
                 } else if (ctrl.assetBalance.currency === Currency.ETH) {
@@ -206,7 +206,7 @@
             }
 
             var total = Money.fromTokens(ctrl.total, ctrl.assetBalance.currency);
-            var fee = Money.fromTokens(ctrl.autocomplete.getFeeAmount(), Currency.WAVES);
+            var fee = Money.fromTokens(ctrl.autocomplete.getFeeAmount(), Currency.EARTHS);
             ctrl.confirm.amount = total;
             ctrl.confirm.fee = fee;
             ctrl.confirm.recipient = ctrl.recipient;
@@ -262,7 +262,7 @@
         }
     }
 
-    WavesWalletWithdrawController.$inject = [
+    EarthsWalletWithdrawController.$inject = [
         '$scope', 'constants.ui', 'wallet.events', 'autocomplete.fees', 'dialogService', '$element',
         'coinomatService', 'transactionBroadcast', 'notificationService',
         'apiService', 'formattingService', 'assetService', 'applicationContext'
@@ -270,5 +270,5 @@
 
     angular
         .module('app.wallet')
-        .controller('walletWithdrawController', WavesWalletWithdrawController);
+        .controller('walletWithdrawController', EarthsWalletWithdrawController);
 })();

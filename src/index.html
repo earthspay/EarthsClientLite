@@ -418,7 +418,7 @@
         <div id="mBB-wallet" class="mBB-content" ng-switch-when="wallet" ng-controller="walletListController as walletList">
 
           <div class="noDisp" ng-controller="walletSendController as send">
-            <div id="wB-butSend-WAV" earths-dialog ok-button-caption="SUBMIT" cancel-button-visible="false" on-dialog-ok="send.submitTransfer(send.form)">
+            <div id="wB-butSend-EAR" earths-dialog ok-button-caption="SUBMIT" cancel-button-visible="false" on-dialog-ok="send.submitTransfer(send.form)">
               <form id="send-earths-form" name="send.form" class="paymentForm" novalidate ng-validate="send.validationOptions">
                 <h2 class="sectionHeader">SEND PAYMENT: {{send.currency}}</h2>
                 <table>

@@ -80,7 +80,7 @@ describe('Wallet.Send.Controller', function() {
         expect(controller.validationOptions.rules.sendAmount.decimal).toEqual(2);
         expect(controller.validationOptions.rules.sendAmount.min).toEqual(0.01);
         expect(controller.validationOptions.rules.sendAmount.max).toEqual(10);
-        expect(dialogService.open).toHaveBeenCalledWith('#wB-butSend-WAV');
+        expect(dialogService.open).toHaveBeenCalledWith('#wB-butSend-EAR');
     });
 
     it('should understand that earths are being sent', function () {
@@ -88,7 +88,7 @@ describe('Wallet.Send.Controller', function() {
 
         expect(controller.feeAndTransferAssetsAreTheSame).toBe(true);
 
-        expect(dialogService.open).toHaveBeenCalledWith('#wB-butSend-WAV');
+        expect(dialogService.open).toHaveBeenCalledWith('#wB-butSend-EAR');
     });
 
     it('should create transaction is all fields are valid', function () {

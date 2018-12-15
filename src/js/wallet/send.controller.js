@@ -96,7 +96,7 @@
             ctrl.validationOptions.messages.sendAmount.max = 'Payment amount is too big. ' +
                 'It should be less or equal to ' + ctrl.assetBalance.formatAmount(false);
 
-            dialogService.open('#wB-butSend-WAV');
+            dialogService.open('#wB-butSend-EAR');
         });
 
         function submitTransfer(transferForm) {

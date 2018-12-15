@@ -6,7 +6,7 @@
 
         var mapping = {};
         mapping[Currency.EARTHS.displayName] = {
-            image: 'wB-bg-WAV.svg',
+            image: 'wB-bg-EAR.svg',
             displayName: Currency.EARTHS.displayName
         };
         mapping[Currency.BTC.displayName] = {

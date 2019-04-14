@@ -90,26 +90,26 @@ module.exports = function (grunt) {
                 testnet: {
                     name: 'testnet',
                     code: 'T',
-                    server: 'https://testnet1.earthsnodes.com',
+                    server: 'https://testnet.earths.ga',
                     coinomat: 'https://test.coinomat.earths.ga',
-                    matcher: 'https://testnet1.earthsnodes.com',
-                    datafeed: 'https://marketdata.earths.ga'
+                    matcher: 'https://testnet.matcher.earths.ga.',
+                    datafeed: 'https://testnet.marketdata.earths.ga'
                 },
                 mainnet: {
                     name: 'mainnet',
                     code: 'W',
-                    server: 'https://nodes.earthsnodes.org',
+                    server: 'https://earthsnodes.earths.ga',
                     coinomat: 'https://coinomat.earths.ga',
-                    matcher: 'https://matcher.earthsnodes.org',
-                    datafeed: 'https://marketdata.earthsnodes.org'
+                    matcher: 'https://matcher.earths.ga',
+                    datafeed: 'https://marketdata.earths.ga'
                 },
                 devnet: {
                     name: 'devnet',
                     code: 'D',
-                    server: 'http://52.210.14.4:17779/',
+                    server: 'http://devnet.earths.ga/',
                     coinomat: 'https://test.coinomat.earths.ga',
-                    matcher: 'http://52.210.14.4:7776',
-                    datafeed: 'http://marketdata.earths.ga'
+                    matcher: 'http://devnet.matcher.earths.ga',
+                    datafeed: 'http://devnet.marketdata.earths.ga'
                 },
                 chrome: {
                     testnet: {
